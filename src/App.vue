@@ -1,10 +1,6 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link class="btn btn-primary" to="/">Home</router-link>|
-      <router-link class="btn btn-danger" to="/about">About</router-link>|
-      <router-link class="btn btn-danger" to="/login">login</router-link>
-    </div>
+    <div id="nav"></div>
     <router-view />
   </div>
 </template>

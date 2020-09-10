@@ -1,7 +1,7 @@
 <template>
   <form @submit.stop.prevent>
     <div class="form-group">
-      <Brand />
+      <g-brand></g-brand>
     </div>
     <div class="form-group">
       <span>Please login with your account</span>
@@ -21,7 +21,7 @@
       <input type="password" class="form-password" placeholder="Password" />
     </div>
     <div class="form-group">
-      <span class="title-info">Forgot password?</span>
+      <span class="title-info" @click="linkResetPassword">Forgot password?</span>
     </div>
     <div class="form-group">
       <g-button>PRIMARY</g-button>
@@ -36,7 +36,6 @@
 </template>
 
 <script>
-import Brand from '../../../components/atoms/brand'
 export default {
   name: 'Login',
   data() {
@@ -45,12 +44,12 @@ export default {
     }
   },
   methods: {
+    linkResetPassword() {
+      this.$router.push({ name: 'ResetPassword' })
+    },
     changeActiv() {
       this.isCustomer = !this.isCustomer
     }
-  },
-  components: {
-    Brand
   }
 }
 </script>
@@ -95,7 +94,7 @@ form :nth-child(3) button {
 }
 
 .button-hover {
-  background-color: #db3022 !important;
+  background-color: #32c33b !important;
   color: #ffffff !important;
 }
 

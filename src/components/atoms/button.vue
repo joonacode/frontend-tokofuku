@@ -24,10 +24,11 @@ export default {
 
 <style scoped>
 .btn {
-  background: #db3022;
+  background: #32c33b;
   border-radius: 20px;
   color: white;
 
   width: 400px;
+  height: 40px;
 }
 </style>

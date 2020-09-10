@@ -16,11 +16,16 @@
             </div>
             <div class="col-12 mt-1">
                 <carousel>
-                        <div class="image bg-primary"></div>
-                        <div class="image bg-warning"></div>
-                        <div class="image bg-success"></div>
-                        <div class="image bg-danger"></div>
-                        <div class="image bg-info"></div>
+                        <img src="../assets/Group 1236.png" class="image">
+                        <img src="../assets/Group1235.png" class="image">
+                        <img src="../assets/Group 1238.png" class="image">
+                        <img src="../assets/Group 1239.png" class="image">
+                        <img src="../assets/Group 1240.png" class="image">
+                        <img src="../assets/Group 1241.png" class="image">
+                        <img src="../assets/Group 1242.png" class="image">
+                        <img src="../assets/Group 1243.png" class="image">
+                        <img src="../assets/Group 1244.png" class="image">
+                        <img src="../assets/Group 1245.png" class="image">
                 </carousel>
             </div>
             <div class="col-12 mt-5">
@@ -309,8 +314,9 @@ export default {
     object-fit: cover;
 }
 .image {
-    width: 206px;
     height: 220px;
+    object-fit: cover;
+    border-radius: 8px;
 }
 .text {
     font-size: 45px;

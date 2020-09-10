@@ -1,13 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
-<<<<<<< HEAD
-=======
-import Login from '../views/auth/login/Login.vue'
-import ResetPassword from '../views/auth/resetPassword/ResetPassword.vue'
-import ConfirmPassword from '../views/auth/resetPassword/ConfirmPassword.vue'
-import DetailProduct from '../components/organizm/detailproduct.vue'
->>>>>>> 78eb59314b93da08758aa31ebfcca7de9476758d
 
 Vue.use(VueRouter)
 
@@ -18,29 +11,6 @@ const routes = [
     component: Home
   },
   {
-<<<<<<< HEAD
-=======
-    path: '/login',
-    name: 'Login',
-    component: Login
-  },
-  {
-    path: '/resetPassword',
-    name: 'ResetPassword',
-    component: ResetPassword
-  },
-  {
-    path: '/confirmPassword',
-    name: 'ConfirmPassword',
-    component: ConfirmPassword
-  },
-  {
-    path: '/detailproduct',
-    name: 'detailproduct',
-    component: DetailProduct
-  },
-  {
->>>>>>> 78eb59314b93da08758aa31ebfcca7de9476758d
     path: '/about',
     name: 'About',
     // route level code-splitting

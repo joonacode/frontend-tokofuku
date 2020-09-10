@@ -1,9 +1,5 @@
 {
-<<<<<<< HEAD
-  "name": "team-frontend",
-=======
   "name": "frontend-tokofuku",
->>>>>>> 78eb59314b93da08758aa31ebfcca7de9476758d
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -17,72 +13,26 @@
     "bootstrap": "^4.5.2",
     "bootstrap-vue": "^2.16.0",
     "core-js": "^3.6.5",
-<<<<<<< HEAD
     "vue": "^2.6.11",
-=======
-    "vue": "^2.6.12",
->>>>>>> 78eb59314b93da08758aa31ebfcca7de9476758d
     "vue-router": "^3.2.0",
     "vuex": "^3.4.0"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "~4.5.0",
-    "@vue/cli-plugin-eslint": "~4.5.0",
-    "@vue/cli-plugin-router": "~4.5.0",
-    "@vue/cli-plugin-unit-jest": "~4.5.0",
-    "@vue/cli-plugin-vuex": "~4.5.0",
-    "@vue/cli-service": "~4.5.0",
+    "@vue/cli-plugin-babel": "^4.5.6",
+    "@vue/cli-plugin-eslint": "^4.5.6",
+    "@vue/cli-plugin-router": "^4.5.6",
+    "@vue/cli-plugin-unit-jest": "^4.5.6",
+    "@vue/cli-plugin-vuex": "^4.5.6",
+    "@vue/cli-service": "^4.5.6",
     "@vue/eslint-config-standard": "^5.1.2",
-    "@vue/test-utils": "^1.0.3",
+    "@vue/test-utils": "^1.1.0",
     "babel-eslint": "^10.1.0",
-<<<<<<< HEAD
     "eslint": "^6.7.2",
-=======
-    "eslint": "^6.8.0",
->>>>>>> 78eb59314b93da08758aa31ebfcca7de9476758d
     "eslint-plugin-import": "^2.20.2",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-standard": "^4.0.0",
-<<<<<<< HEAD
     "eslint-plugin-vue": "^6.2.2",
     "vue-template-compiler": "^2.6.11"
-=======
-    "eslint-plugin-vue": "^7.0.0-beta.3",
-    "vue-template-compiler": "^2.6.11"
-  },
-  "eslintConfig": {
-    "root": true,
-    "env": {
-      "node": true
-    },
-    "extends": [
-      "plugin:vue/essential",
-      "@vue/standard"
-    ],
-    "parserOptions": {
-      "parser": "babel-eslint"
-    },
-    "rules": {},
-    "overrides": [
-      {
-        "files": [
-          "**/__tests__/*.{j,t}s?(x)",
-          "**/tests/unit/**/*.spec.{j,t}s?(x)"
-        ],
-        "env": {
-          "jest": true
-        }
-      }
-    ]
-  },
-  "browserslist": [
-    "> 1%",
-    "last 2 versions",
-    "not dead"
-  ],
-  "jest": {
-    "preset": "@vue/cli-plugin-unit-jest"
->>>>>>> 78eb59314b93da08758aa31ebfcca7de9476758d
   }
 }

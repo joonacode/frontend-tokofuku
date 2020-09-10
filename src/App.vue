@@ -1,13 +1,6 @@
 <template>
   <div id="app">
-<<<<<<< HEAD
-    <div id="nav">
-      <router-link class="btn btn-primary" to="/">Home</router-link>|
-      <router-link class="btn btn-danger" to="/about">About</router-link>
-    </div>
-=======
     <div id="nav"></div>
->>>>>>> 78eb59314b93da08758aa31ebfcca7de9476758d
     <router-view />
   </div>
 </template>

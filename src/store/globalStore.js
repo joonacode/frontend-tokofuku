@@ -1,22 +1,27 @@
 // state
 const state = {
-  // Global State
+  isLoading: false
 }
 
 // getters
 const getters = {
-  // getLoading: (state) => state.isLoading
-  // Global Getters
+  getLoading: (state) => state.isLoading
 }
 
 // actions
 const actions = {
-  // Global Actions
+  changeIsLoading({
+    commit
+  }, status) {
+    commit('CHANGE_IS_LOADING', status)
+  }
 }
 
 // mutations
 const mutations = {
-  // Global mutations
+  CHANGE_IS_LOADING: (state, status) => {
+    state.isLoading = status
+  }
 }
 
 export default {

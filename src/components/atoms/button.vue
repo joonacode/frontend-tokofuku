@@ -1,5 +1,5 @@
 <template>
-  <button :disabled="isLoading" class="btn" :class="cusClass">
+  <button :disabled="isLoading" @click="$emit('cus-click')" class="btn" :class="cusClass">
     <span v-if="isLoading">Loading ...</span>
     <span v-if="!isLoading">
       <slot></slot>
@@ -28,7 +28,7 @@ export default {
   border-radius: 20px;
   color: white;
 
-  width: 400px;
+  width: 100%;
   height: 40px;
 }
 </style>

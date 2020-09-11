@@ -159,7 +159,7 @@ export default {
 }
 #body input {
   height: 40px;
-  width: 400px;
+  width: 100%;
   margin-top: 10px;
   padding-left: 20px;
   filter: drop-shadow(0px 1px 8px rgba(0, 0, 0, 0.05));
@@ -168,18 +168,16 @@ export default {
   font-size: 15px;
 }
 #submit {
-  height: 90px;
   display: flex;
   align-items: center;
   margin-top: 10px;
 }
 #submit button {
+  width: 100%;
   background: #32c33b;
   border-radius: 20px;
   border: none;
   color: white;
-  width: 420px;
-  height: 40px;
   font-size: 15px;
   cursor: pointer;
 }

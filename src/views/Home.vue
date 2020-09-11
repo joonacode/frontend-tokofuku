@@ -5,6 +5,7 @@
     <g-button cusClass="btn-primary">Global Button</g-button>|
     <router-link class="btn btn-primary" to="/login">Login</router-link>|
     <router-link class="btn btn-primary" to="/detailproduct">detail product</router-link>
+    <router-link class="btn btn-primary" to="/chat">Chat</router-link>
   </div>
 </template>
 

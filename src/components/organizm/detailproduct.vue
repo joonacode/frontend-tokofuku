@@ -369,7 +369,7 @@ export default {
   width: 300px;
 }
 .main-choice .button .small-btn {
-  /* border: 1px solid black; */
+  border: 1.5px solid #222222;
   margin-right: 15px;
   width: 150px;
   background: #ffffff;
@@ -489,6 +489,6 @@ export default {
 }
 
 .product-review .rating .review-rating .progres-rating .progres {
-  height: 20px;
+  height: 11px;
 }
 </style>

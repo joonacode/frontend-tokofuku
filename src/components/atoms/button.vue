@@ -1,5 +1,10 @@
 <template>
-  <button :disabled="isLoading" @click="$emit('cus-click')" class="btn" :class="cusClass">
+  <button
+    :disabled="isLoading"
+    @click="$emit('cus-click')"
+    class="btn"
+    :class="[cusClass, !removeDefault ? 'btn-default' : '']"
+  >
     <span v-if="isLoading">Loading ...</span>
     <span v-if="!isLoading">
       <slot></slot>
@@ -17,13 +22,17 @@ export default {
     },
     cusClass: {
       type: String
+    },
+    removeDefault: {
+      type: Boolean,
+      default: false
     }
   }
 }
 </script>
 
 <style scoped>
-.btn {
+.btn-default {
   background: #32c33b;
   border-radius: 20px;
   color: white;

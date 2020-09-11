@@ -1,15 +1,19 @@
 <template>
-  <div>
-    <div class="form-group">
-      <img src="../../assets/Vector.png" class="img-brand" />
+  <router-link :to="{name:'Home'}" class="text-decoration-none">
+    <div class="form-group" :class="cusClass">
+      <img src="../../assets/Vector.png" :width="width" class="img-brand" />
       <span class="title-brand">TokoFuku</span>
     </div>
-  </div>
+  </router-link>
 </template>
 
 <script>
 export default {
-  name: 'Brand'
+  name: 'Brand',
+  props: {
+    width: Number,
+    cusClass: String
+  }
 }
 </script>
 

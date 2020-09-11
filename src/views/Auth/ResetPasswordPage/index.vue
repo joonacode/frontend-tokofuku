@@ -1,23 +1,50 @@
 <template>
   <!-- Form Reset Password Konfirmasi Password-->
   <AuthWrapper title="Reset Password">
-    <form @submit.stop.prevent>
-      <div class="form-group mt-3">
-        <span
-          class="title2 mb-4 d-inline-block"
-        >You need to change your password to activate your account</span>
+    <div class="form-group mt-3">
+      <span
+        class="title2 mb-4 d-inline-block"
+      >You need to change your password to activate your account</span>
+    </div>
+    <div class="form-group">
+      <input type="password" class="form-email" v-model="password" placeholder="Password" />
+    </div>
+    <div class="form-group">
+      <input
+        type="password"
+        class="form-password"
+        v-model="confirmPassword"
+        placeholder="Confirm Password"
+      />
+    </div>
+    <g-button type="button" v-b-modal.my-modal>Confirm</g-button>
+    <b-modal id="my-modal" hide-footer hide-header>
+      <div class="text-center">
+        <g-brand class="brand mt-3 d-block"></g-brand>
+        <span class="font-weight-bold d-inline-block my-4">
+          Request to Reset Your Account
+          <br />Password
+        </span>
+        <div class="form mb-4">
+          <img src="../../../assets/lock.png" />
+        </div>
+        <span class="text-danger">
+          The following is the button for you to reset
+          <br />the password.
+        </span>
+        <div class="form mt-4 mb-3">
+          <g-button
+            type="button"
+            @cus-click="resetPasswordAction"
+            :isLoading="getLoading"
+            class="button"
+          >Change Password</g-button>
+        </div>
       </div>
-      <div class="form-group">
-        <input type="text" class="form-email" placeholder="Password" />
-      </div>
-      <div class="form-group">
-        <input type="password" class="form-password" placeholder="Confirm Password" />
-      </div>
-      <g-button @cus-click="ReqResetPass">PRIMARY</g-button>
-    </form>
+    </b-modal>
 
     <!-- Modal Req Reset Password-->
-    <div class="overlay" v-if="isShow">
+    <!-- <div class="overlay" v-if="isShow">
       <div class="form">
         <g-brand class="brand"></g-brand>
       </div>
@@ -40,12 +67,13 @@
         <g-button class="button" @cus-click="$router.push({name: 'Login'})">Change Password</g-button>
       </div>
       <div class="form"></div>
-    </div>
+    </div>-->
   </AuthWrapper>
 </template>
 
 <script>
 import AuthWrapper from '@/components/molecules/AuthWrapper'
+import { mapActions, mapGetters } from 'vuex'
 export default {
   name: 'ConfirmPassword',
   components: {
@@ -53,14 +81,56 @@ export default {
   },
   data() {
     return {
-      isShow: false
+      isShow: false,
+      password: '',
+      confirmPassword: ''
     }
   },
   methods: {
+    ...mapActions('auth', ['verifyResetPassword', 'resetPassword']),
+    resetPasswordAction() {
+      const token = this.$route.query.token
+      const newPassword = {
+        password: this.password,
+        confirmPassword: this.confirmPassword,
+        token
+      }
+      this.resetPassword(newPassword)
+        .then((response) => {
+          this.toastSuccess(response.message)
+          this.$router.push({ name: 'Login' })
+        })
+        .catch((err) => {
+          this.toastError(
+            err.data.error.sqlMessage
+              ? err.data.error.sqlMessage
+              : err.data.error.join(', ')
+          )
+          this.$bvModal.hide('my-modal')
+        })
+      this.password = ''
+      this.confirmPassword = ''
+    },
     ReqResetPass() {
       this.isShow = !this.isShow
     }
-  }
+  },
+  mounted() {
+    const token = this.$route.query.token
+    this.verifyResetPassword({ token: token })
+      .then((response) => {
+        this.toastSuccess('Token ok please change password')
+      })
+      .catch((err) => {
+        this.toastError(
+          err.data.error.sqlMessage
+            ? err.data.error.sqlMessage
+            : err.data.error.join(', ')
+        )
+        this.$router.push({ name: 'Login' })
+      })
+  },
+  computed: mapGetters(['getLoading'])
 }
 </script>
 
@@ -196,7 +266,7 @@ div .overlay {
   width: 300px;
   height: 42px;
 }
-.overlay :nth-child(6) {
+.bottom-red {
   height: 20px;
   background: #32c33b;
 }

@@ -14,7 +14,7 @@
     "bootstrap-vue": "^2.16.0",
     "core-js": "^3.6.5",
     "vue": "^2.6.11",
-    "vue-owl-carousel2": "^2.0.7",
+    "vue-owl-carousel": "^2.0.3",
     "vue-router": "^3.2.0",
     "vue-sweetalert2": "^3.0.8",
     "vue-toast-notification": "^0.5.0",

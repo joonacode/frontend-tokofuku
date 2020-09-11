@@ -1,64 +1,19 @@
 <template>
-  <div class="container">
-    <div class="row">
-      <div class="mt-4 col-12">
-        <carousel>
-          <b-img
-            src="https://id-test-11.slatic.net/p/4f35f5774bc887b4a984ff9b89dfcfee.jpg"
-            fluid
-            alt="Fluid image"
-            class="banner"
-          ></b-img>
-          <b-img
-            src="https://folkswedding.com/js/fileman/Uploads/prewed%20background%20polos/201.jpg"
-            fluid
-            alt="Fluid image"
-            class="banner"
-          ></b-img>
-          <b-img
-            src="https://cdn-image.hipwee.com/wp-content/uploads/2019/04/hipwee-43049075_726933011003614_6004018620840017920_n-640x800.jpg"
-            fluid
-            alt="Fluid image"
-            class="banner"
-          ></b-img>
-          <b-img
-            src="https://1.bp.blogspot.com/-8B9CWsFeEW8/XRfuWcursHI/AAAAAAAAD0M/5vmxwCotz6cE_41LL2OseyFP7RmKs4KbQCLcBGAs/s640/foto-keluarga-studio-berdiri-sandar-background-abu-keren.jpg"
-            fluid
-            alt="Fluid image"
-            class="banner"
-          ></b-img>
-          <b-img
-            src="https://isellerdotblog.files.wordpress.com/2020/06/adult-bag-beauty-model-blue-background-1126993.jpg?w=1024"
-            fluid
-            alt="Fluid image"
-            class="banner"
-          ></b-img>
-        </carousel>
-      </div>
-      <div class="col-12 mt-5">
-        <h2 class="text-left text-black">Category</h2>
-        <p class="text-muted text-left">what are you currently looking for</p>
-      </div>
-      <div class="col-12 mt-1">
-        <carousel>
-          <img :src="require(`@/assets/Group 1236.png`)" class="image" alt="image" />
-          <img :src="require(`@/assets/Group 1235.jpg`)" alt="image" class="image" />
-          <img :src="require(`@/assets/Group 1238.png`)" alt="image" class="image" />
-          <img :src="require(`@/assets/Group 1239.png`)" alt="image" class="image" />
-          <img :src="require(`@/assets/Group 1240.png`)" alt="image" class="image" />
-          <img :src="require(`@/assets/Group 1241.png`)" alt="image" class="image" />
-          <img :src="require(`@/assets/Group 1242.png`)" alt="image" class="image" />
-          <img :src="require(`@/assets/Group 1243.png`)" alt="image" class="image" />
-          <img :src="require(`@/assets/Group 1244.png`)" alt="image" class="image" />
-          <img :src="require(`@/assets/Group 1245.png`)" alt="image" class="image" />
-        </carousel>
-      </div>
-      <div class="col-12 mt-5">
-        <h2 class="text-left text-black">Now</h2>
-        <p class="text-muted text-left">you've never seen it before</p>
-      </div>
-      <div class="col-12 mt-1 row">
-        <b-card-group>
+  <div>
+    <MainNavbar />
+    <div class="container">
+      <div class="row">
+        <div class="mt-4 col-12">
+          <BannerCarousel />
+        </div>
+        <div class="col-12 mt-3">
+          <h2 class="text-left text-black">Category</h2>
+          <p class="text-muted text-left">what are you currently looking for</p>
+        </div>
+        <div class="col-12 mt-1">
+          <CategoryCarousel />
+        </div>
+        <!-- <div class="col-12 mt-1 row">
           <div class="col-lg-3 col-md-4 col-sm-6 col-12 text-left">
             <b-card
               title="Men Formal Suit Premium Quality"
@@ -438,17 +393,34 @@
               </b-card-text>
             </b-card>
           </div>
-        </b-card-group>
+        </div>-->
       </div>
+      <div class="row">
+        <div class="col-md-12 mt-5">
+          <h2 class="text-left text-black font-weight-bold">New</h2>
+          <p class="text-muted text-left">you've never seen it before</p>
+        </div>
+      </div>
+      <ProductList />
+      <div class="row">
+        <div class="col-md-12 mt-5">
+          <h2 class="text-left text-black font-weight-bold">Popular</h2>
+          <p class="text-muted text-left">Find clothes that are trending recently</p>
+        </div>
+      </div>
+      <ProductList />
     </div>
   </div>
 </template>
 
 <script>
-import carousel from 'vue-owl-carousel2'
+import MainNavbar from '@/components/layout/MainNavbar'
+import BannerCarousel from '@/components/molecules/BannerCarousel'
+import CategoryCarousel from '@/components/molecules/CategoryCarousel'
+import ProductList from '@/components/molecules/ProductList'
 
 export default {
-  components: { carousel }
+  components: { MainNavbar, BannerCarousel, CategoryCarousel, ProductList }
 }
 </script>
 

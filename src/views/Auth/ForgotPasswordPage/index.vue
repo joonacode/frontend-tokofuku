@@ -48,12 +48,13 @@ export default {
       }
       this.forgotPassword(dataLogin)
         .then((response) => {
-          this.toastSuccess(response.message)
+          this.toastSuccess(
+            'We send a change password link to your email address. please check'
+          )
           this.email = ''
           this.$router.push({ name: 'Login' })
         })
         .catch((err) => {
-          console.log(err)
           this.toastError(
             err.data.error.sqlMessage
               ? err.data.error.sqlMessage

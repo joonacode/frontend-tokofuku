@@ -2,6 +2,7 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
+<<<<<<< HEAD
 // Global component
 import '@/globalComponents.js'
 
@@ -26,6 +27,8 @@ Vue.use(VueToast, {
 Vue.use(BootstrapVue)
 // Optionally install the BootstrapVue icon components plugin
 Vue.use(IconsPlugin)
+=======
+>>>>>>> e76f83565976337c32eeefae5a85f26b9f6d3732
 
 Vue.config.productionTip = false
 

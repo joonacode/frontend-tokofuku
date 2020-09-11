@@ -39,16 +39,16 @@
 import Brand from '../../../components/atoms/brand'
 export default {
   name: 'Login',
-  data () {
+  data() {
     return {
       isCustomer: true
     }
   },
   methods: {
-    changeActiv () {
+    changeActiv() {
       this.isCustomer = !this.isCustomer
     },
-    toRegister () {
+    toRegister() {
       this.$router.push('/register')
     }
   },

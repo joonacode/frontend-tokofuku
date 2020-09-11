@@ -14,7 +14,6 @@ export default {
 </script>
 
 <style scoped>
-<<<<<<< HEAD
 /* Img Brand */
 .form-group .img-brand {
   /* border: 1px solid black; */
@@ -32,22 +31,5 @@ export default {
   color: #32c33b;
   font-weight: bold;
   font-size: 23px;
-=======
-.form-group {
-  display: flex;
-  align-items: center;
-}
-/* Img Brand */
-.img-brand {
-  height: 50px;
-}
-
-/* Form Title TokoFuku */
-.title-brand {
-  font-size: 28px;
-  font-weight: bold;
-  color: #32c33b;
-  padding: 10px 0 0 7px;
->>>>>>> e76f83565976337c32eeefae5a85f26b9f6d3732
 }
 </style>

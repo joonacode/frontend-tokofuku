@@ -4,10 +4,13 @@ const BASE_URL = 'auth'
 
 export default {
   register(data) {
-    return Api.post(`${BASE_URL}/register`, data)
+    return Api.post(`${BASE_URL}/signup`, data)
   },
   login(data) {
     return Api.post(`${BASE_URL}/login`, data)
+  },
+  forgotPassword(data) {
+    return Api.post(`${BASE_URL}/request-reset-password`, data)
   },
   refreshToken(data) {
     return Api.post(`${BASE_URL}/refresh-token`, data)

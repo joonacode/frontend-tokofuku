@@ -59,7 +59,7 @@
       </div>
       <div class="col-12 mt-1 row">
         <b-card-group>
-          <div class="col-3 text-left">
+          <div class="col-lg-3 col-md-4 col-sm-6 col-12 text-left">
             <b-card
               title="Men Formal Suit Premium Quality"
               img-src="https://ae01.alicdn.com/kf/HTB1uKsVRFXXXXaLXVXXq6xXFXXXo/Blazer-pria-pakaian-resmi-terbaru-desain-mantel-celana-tuxedo-jas-pria-kostum-celana-pernikahan-pernikahan-setelan.jpg"
@@ -84,7 +84,7 @@
               </b-card-text>
             </b-card>
           </div>
-          <div class="col-3 text-left">
+          <div class="col-lg-3 col-md-4 col-sm-6 col-12 text-left">
             <b-card
               title="Men Formal Suit Premium Quality"
               img-src="https://sc02.alicdn.com/kf/HTB1M.dQNXXXXXbkXXXX760XFXXX7.png_350x350.png"
@@ -109,7 +109,7 @@
               </b-card-text>
             </b-card>
           </div>
-          <div class="col-3 text-left">
+          <div class="col-lg-3 col-md-4 col-sm-6 col-12 text-left">
             <b-card
               title="Men Formal Suit Premium Quality"
               img-src="https://ecs7.tokopedia.net/img/cache/700/product-1/2020/7/21/108511810/108511810_287c6191-adac-400b-b67e-444a416b58e0_700_700"
@@ -134,7 +134,7 @@
               </b-card-text>
             </b-card>
           </div>
-          <div class="col-3 text-left">
+          <div class="col-lg-3 col-md-4 col-sm-6 col-12 text-left">
             <b-card
               title="Men Formal Suit Premium Quality"
               img-src="https://ae01.alicdn.com/kf/HTB1_61aJpXXXXa_XFXXq6xXFXXXp/2015-baru-musim-gugur-busana-pria-baju-Slim-fit-kemeja-Warna-murni-kemeja-tuxedo-Lengan-panjang.jpg"
@@ -159,7 +159,7 @@
               </b-card-text>
             </b-card>
           </div>
-          <div class="col-3 text-left">
+          <div class="col-lg-3 col-md-4 col-sm-6 col-12 text-left">
             <b-card
               title="Men Formal Suit Premium Quality"
               img-src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcR6p7Ql6WkyWb1_sIp6NZnChtz2VBFLiHjQNw&usqp=CAU"
@@ -184,7 +184,7 @@
               </b-card-text>
             </b-card>
           </div>
-          <div class="col-3 text-left">
+          <div class="col-lg-3 col-md-4 col-sm-6 col-12 text-left">
             <b-card
               title="Men Formal Suit Premium Quality"
               img-src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTuK_2y1pPpJIvia5fnQ1AZmAEz9FQtPV4yoA&usqp=CAU"
@@ -209,7 +209,7 @@
               </b-card-text>
             </b-card>
           </div>
-          <div class="col-3 text-left">
+          <div class="col-lg-3 col-md-4 col-sm-6 col-12 text-left">
             <b-card
               title="Blezer Girl"
               img-src="https://img-z.okeinfo.net/okz/500/library/images/2020/08/04/fagdmi2iwqw7lkncs5q7_11948.jpg"
@@ -234,7 +234,7 @@
               </b-card-text>
             </b-card>
           </div>
-          <div class="col-3 text-left">
+          <div class="col-lg-3 col-md-4 col-sm-6 col-12 text-left">
             <b-card
               title="Men Formal Suit Premium Quality"
               img-src="https://www.raramart.com/assets/uploads/products/2020-01-21-05-03-43-1579583023-nnnn.JPEG"
@@ -263,7 +263,7 @@
             <h2 class="text-left text-black">Popular</h2>
             <p class="text-muted text-left">find clothes that are trending recently</p>
           </div>
-          <div class="col-3 text-left">
+          <div class="col-lg-3 col-md-4 col-sm-6 col-12 text-left">
             <b-card
               title="Men Formal Suit Premium Quality"
               img-src="https://sc02.alicdn.com/kf/HTB1M.dQNXXXXXbkXXXX760XFXXX7.png_350x350.png"
@@ -288,7 +288,7 @@
               </b-card-text>
             </b-card>
           </div>
-          <div class="col-3 text-left">
+          <div class="col-lg-3 col-md-4 col-sm-6 col-12 text-left">
             <b-card
               title="Men Formal Suit Premium Quality"
               img-src="https://ecs7.tokopedia.net/img/cache/700/product-1/2020/7/21/108511810/108511810_287c6191-adac-400b-b67e-444a416b58e0_700_700"
@@ -313,7 +313,7 @@
               </b-card-text>
             </b-card>
           </div>
-          <div class="col-3 text-left">
+          <div class="col-lg-3 col-md-4 col-sm-6 col-12 text-left">
             <b-card
               title="Men Formal Suit Premium Quality"
               img-src="https://ae01.alicdn.com/kf/HTB1_61aJpXXXXa_XFXXq6xXFXXXp/2015-baru-musim-gugur-busana-pria-baju-Slim-fit-kemeja-Warna-murni-kemeja-tuxedo-Lengan-panjang.jpg"
@@ -338,7 +338,7 @@
               </b-card-text>
             </b-card>
           </div>
-          <div class="col-3 text-left">
+          <div class="col-lg-3 col-md-4 col-sm-6 col-12 text-left">
             <b-card
               title="Men Formal Suit Premium Quality"
               img-src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcR6p7Ql6WkyWb1_sIp6NZnChtz2VBFLiHjQNw&usqp=CAU"
@@ -363,7 +363,7 @@
               </b-card-text>
             </b-card>
           </div>
-          <div class="col-3 text-left">
+          <div class="col-lg-3 col-md-4 col-sm-6 col-12 text-left">
             <b-card
               title="Men Formal Suit Premium Quality"
               img-src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTuK_2y1pPpJIvia5fnQ1AZmAEz9FQtPV4yoA&usqp=CAU"
@@ -388,7 +388,7 @@
               </b-card-text>
             </b-card>
           </div>
-          <div class="col-3 text-left">
+          <div class="col-lg-3 col-md-4 col-sm-6 col-12 text-left">
             <b-card
               title="Blezer Girl"
               img-src="https://img-z.okeinfo.net/okz/500/library/images/2020/08/04/fagdmi2iwqw7lkncs5q7_11948.jpg"
@@ -413,7 +413,7 @@
               </b-card-text>
             </b-card>
           </div>
-          <div class="col-3 text-left">
+          <div class="col-lg-3 col-md-4 col-sm-6 col-12 text-left">
             <b-card
               title="Men Formal Suit Premium Quality"
               img-src="https://www.raramart.com/assets/uploads/products/2020-01-21-05-03-43-1579583023-nnnn.JPEG"

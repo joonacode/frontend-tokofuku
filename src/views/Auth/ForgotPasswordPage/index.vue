@@ -1,19 +1,23 @@
 <template>
   <AuthWrapper title="Reset Password">
     <!-- Form Reset Password Input Email First-->
-    <form @submit.stop.prevent>
+    <form @submit.prevent="forgotPasswordAction">
       <div class="form-group mt-4">
-        <input type="email" class="form-email" id="exampleInputEmail1" placeholder="Email" />
+        <input
+          type="email"
+          class="form-email"
+          v-model="email"
+          id="exampleInputEmail1"
+          placeholder="Email"
+        />
       </div>
       <div class="form-group">
-        <router-link :to="{name: 'Login'}" class="title-info">Back To Login</router-link>
+        <router-link :to="{name: 'Login'}" class="title-info text-decoration-none">Back To Login</router-link>
       </div>
-      <router-link :to="{name: 'ResetPassword'}">
-        <g-button cusClass="mb-4">PRIMARY</g-button>
-      </router-link>
-      <span class="ask">
+      <g-button type="submit" cusClass="mb-4" :isLoading="getLoading">Request Change Password</g-button>
+      <span class="ask" id="foot">
         Don't have a Tokopedia account?
-        <a href="#">Register</a>
+        <router-link :to="{name: 'Register'}" class="title-info">Register</router-link>
       </span>
     </form>
   </AuthWrapper>
@@ -21,6 +25,7 @@
 
 <script>
 import AuthWrapper from '@/components/molecules/AuthWrapper'
+import { mapActions, mapGetters } from 'vuex'
 
 export default {
   name: 'ResetPassword',
@@ -28,13 +33,37 @@ export default {
     AuthWrapper
   },
   data() {
-    return {}
+    return {
+      email: ''
+    }
   },
   methods: {
+    ...mapActions('auth', ['forgotPassword']),
     linkConfirm() {
       this.$router.push({ name: 'ConfirmPassword' })
+    },
+    forgotPasswordAction() {
+      const dataLogin = {
+        email: this.email
+      }
+      this.forgotPassword(dataLogin)
+        .then((response) => {
+          this.toastSuccess(response.message)
+          this.email = ''
+          this.$router.push({ name: 'Login' })
+        })
+        .catch((err) => {
+          console.log(err)
+          this.toastError(
+            err.data.error.sqlMessage
+              ? err.data.error.sqlMessage
+              : err.data.error.join(', ')
+          )
+          this.email = ''
+        })
     }
-  }
+  },
+  computed: mapGetters(['getLoading'])
 }
 </script>
 
@@ -42,7 +71,9 @@ export default {
 /* Container Form */
 
 /* Settingan for all form group */
-
+#foot {
+  font-size: 15px;
+}
 form :nth-child(1) button {
   /* border: 1px solid black; */
   height: 45px;
@@ -98,11 +129,9 @@ form :nth-child(1) button {
 }
 
 .title-info {
-  color: #db3022;
+  color: #32c33b !important;
   cursor: pointer;
-  display: block;
   font-weight: bold;
-  text-decoration: none;
 }
 
 .ask a {

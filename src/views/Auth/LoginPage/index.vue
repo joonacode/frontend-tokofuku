@@ -3,11 +3,13 @@
     <form @submit.prevent="loginAction">
       <div class="form-group">
         <button
+          type="button"
           class="customer"
           @click="changeActiv"
           :class="[isCustomer?'button-hover' : '']"
         >Customer</button>
         <button
+          type="button"
           class="seller"
           @click="changeActiv"
           :class="[!isCustomer?'button-hover' : '']"
@@ -25,25 +27,23 @@
           :to="{name: 'ForgotPassword'}"
         >Forgot password?</router-link>
       </div>
-      <g-button cusClass="mb-4" type="submit">PRIMARY</g-button>
-      <span class="ask">
+      <g-button cusClass="mb-4" type="submit" :isLoading="getLoading">Login</g-button>
+      <span class="ask" id="foot">
         Don't have a Tokopedia account?
-        <a href="#">Register</a>
+        <router-link :to="{name: 'Register'}">Register</router-link>
       </span>
     </form>
   </AuthWrapper>
 </template>
 
 <script>
-import { mapActions } from 'vuex'
-import swal from '@/components/mixins/swal'
+import { mapActions, mapGetters } from 'vuex'
 import AuthWrapper from '@/components/molecules/AuthWrapper'
 export default {
   name: 'Login',
   components: {
     AuthWrapper
   },
-  mixins: [swal],
   data() {
     return {
       isCustomer: true,
@@ -69,6 +69,7 @@ export default {
           this.toastSuccess(response.message)
           this.email = ''
           this.password = ''
+          this.$router.push({ name: 'Home' })
         })
         .catch((err) => {
           this.toastError(
@@ -79,7 +80,8 @@ export default {
           this.password = ''
         })
     }
-  }
+  },
+  computed: mapGetters(['getLoading'])
 }
 </script>
 
@@ -114,6 +116,10 @@ form :nth-child(1) button {
   color: #ffffff !important;
 }
 
+#foot {
+  font-size: 15px;
+}
+
 .form-group .form-email {
   /* border: 1px solid black; */
   border: 1px solid #9b9b9b;
@@ -143,7 +149,7 @@ form :nth-child(1) button {
 }
 
 .title-info {
-  color: #db3022;
+  color: #32c33b !important;
   cursor: pointer;
   display: block;
   font-weight: bold;
@@ -151,7 +157,7 @@ form :nth-child(1) button {
 
 .ask a {
   margin-bottom: 20px;
-  color: #db3022;
+  color: #32c33b !important;
   font-weight: bold;
   cursor: pointer;
   text-decoration: none;

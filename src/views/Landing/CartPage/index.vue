@@ -1,81 +1,76 @@
 <template>
-<div class="container">
-    <div class="row">
-        <div class="col-12 mb-3">
-            <h1 class="text-left font-weight-bold">My bag</h1>
+  <div>
+    <MainNavbar />
+    <div class="container mt-5">
+      <h2 class="mb-3 font-weight-bold">My bag</h2>
+      <div class="row" v-if="!empty">
+        <div class="col-md-8">
+          <div class="col-md-12 p-3 shadow-sm rounded">
+            <div class="d-flex justify-content-between">
+              <b-form-checkbox size="lg" class="font-weight-bold text-left ml-2">
+                <span class="ml-4" style="fontSize:16px">
+                  Select all items
+                  <span class="text-muted">(2 items selected)</span>
+                </span>
+              </b-form-checkbox>
+              <span class="btn text-danger">Delete</span>
+            </div>
+          </div>
+          <div class="scroll-cart">
+            <CartItem />
+            <CartItem />
+            <CartItem />
+            <CartItem />
+            <CartItem />
+          </div>
         </div>
-        <div class="col-8 row">
-            <div class="col-12 shadow-sm rounded mx-auto">
-                <b-form-checkbox size="lg" class="font-weight-bold text-left ml-2"><span class="ml-4">Select all items <span class="text-muted">(2 items selected)</span></span></b-form-checkbox>
+        <div class="col-md-4">
+          <b-card class="border-0 p-2 shadow-sm">
+            <h5 class="font-weight-bold mb-3">Shopping Summary</h5>
+            <div class="d-flex justify-content-between">
+              <b-card-text class>Total Price</b-card-text>
+              <b-card-text class="font-weight-bold">$ 20.0</b-card-text>
             </div>
-            <div class="col-12 mt-3 shadow-sm">
-                <div class="clearfix row">
-                    <b-form-checkbox size="lg" class="col-1 mt-4 ml-3"></b-form-checkbox>
-                    <b-img left src="https://picsum.photos/125/125/?image=58" alt="Left image" class="col-2"></b-img>
-                    <div class="col-4">
-                    <h4 class="text-left">Men's Formal Suit</h4>
-                    <p class="text-left text-muted">Zalora Cloth</p>
-                    </div>
-                    <div class="col-3 row mt-3 text-center">
-                    <div class="col-4">
-                    <b-button pill class="bg-grey shadow-sm">-</b-button>
-                    </div>
-                    <p class="col-4 mt-1"> 1 </p>
-                    <div class="col-4">
-                    <b-button pill class="bg-white text-dark shadow-sm"> + </b-button>
-                    </div>
-                    </div>
-                    <h5 class="col-2 mt-4 text-right">$ 20.0</h5>
-                </div>
+            <div class="text-center mt-4">
+              <b-button pill block variant="success">Buy</b-button>
             </div>
-            <div class="col-12 mt-3 shadow-sm">
-                <div class="clearfix row">
-                    <b-form-checkbox size="lg" class="col-1 mt-4 ml-3"></b-form-checkbox>
-                    <b-img left src="https://picsum.photos/125/125/?image=58" alt="Left image" class="col-2"></b-img>
-                    <div class="col-4">
-                    <h4 class="text-left">Men's Formal Suit</h4>
-                    <p class="text-left text-muted">Zalora Cloth</p>
-                    </div>
-                    <div class="col-3 row mt-3 text-center">
-                    <div class="col-4">
-                    <b-button pill class="bg-grey shadow-sm">-</b-button>
-                    </div>
-                    <p class="col-4 mt-1"> 1 </p>
-                    <div class="col-4">
-                    <b-button pill class="bg-white text-dark shadow-sm"> + </b-button>
-                    </div>
-                    </div>
-                    <h5 class="col-2 mt-4 text-right">$ 20.0</h5>
-                </div>
-            </div>
-            <div class="col-12">
-            </div>
+          </b-card>
         </div>
-        <div class="col-4">
-                <b-card
-                header="Shopping Summary"
-                align="left"
-                class="shadow-sm"
-                >
-                <div class="row">
-                <b-card-text class="col-6 text-left">Total Price</b-card-text>
-                <b-card-text class="col-6 text-right font-weight-bold">$ 20.0</b-card-text>
-                <div class="col-12 text-center mt-4">
-                <b-button pill block variant="success">Buy</b-button>
-                </div>
-                </div>
-                </b-card>
-        </div>
+      </div>
+      <div class="text-center mt-3" v-if="empty">
+        <img
+          :src="require(`@/assets/images/cartempty.svg`)"
+          class="img-fluid"
+          width="300px"
+          alt
+          srcset
+        />
+        <h3 class="font-weight-bold text-dark mt-5">Your Cart Is Empty</h3>
+      </div>
     </div>
-</div>
+  </div>
 </template>
 
 <script>
-export default {
+import CartItem from '@/components/molecules/CartItem'
+import MainNavbar from '@/components/layout/MainNavbar'
 
+export default {
+  components: {
+    MainNavbar,
+    CartItem
+  },
+  data() {
+    return {
+      empty: true
+    }
+  }
 }
 </script>
 
-<style>
-
+<style  scoped>
+.scroll-cart {
+  max-height: 400px;
+  overflow-y: scroll;
+}
 </style>

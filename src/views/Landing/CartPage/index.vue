@@ -48,21 +48,24 @@
         <h3 class="font-weight-bold text-dark mt-5">Your Cart Is Empty</h3>
       </div>
     </div>
+    <MainFooter />
   </div>
 </template>
 
 <script>
 import CartItem from '@/components/molecules/CartItem'
 import MainNavbar from '@/components/layout/MainNavbar'
+import MainFooter from '@/components/layout/MainFooter'
 
 export default {
   components: {
     MainNavbar,
-    CartItem
+    CartItem,
+    MainFooter
   },
   data() {
     return {
-      empty: true
+      empty: false
     }
   }
 }

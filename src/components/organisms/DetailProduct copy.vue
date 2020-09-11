@@ -322,9 +322,7 @@ export default {
 }
 
 /* Class size */
-.main-choice .size {
-  /* border: 1px solid black; */
-}
+
 .main-choice .size div {
   /* border: 1px solid black; */
   display: inline-block;

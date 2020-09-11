@@ -5,9 +5,9 @@ import Login from '../views/Auth/LoginPage'
 import VerifyAccount from '../views/Auth/LoginPage/ActivateAccount.vue'
 import Register from '../views/Auth/RegisterPage'
 import Cart from '../views/Landing/CartPage'
+import DetailProduct from '../views/Landing/DetailPage'
 import ForgotPassword from '../views/Auth/ForgotPasswordPage'
 import ResetPassword from '../views/Auth/ResetPasswordPage'
-import DetailProduct from '../components/organisms/detailproduct.vue'
 import store from '../store'
 
 Vue.use(VueRouter)
@@ -64,8 +64,8 @@ const routes = [ //
     component: Cart
   },
   {
-    path: '/detailproduct',
-    name: 'detailproduct',
+    path: '/detail-product',
+    name: 'DetailProduct',
     component: DetailProduct
   }
 ]

@@ -7,7 +7,7 @@
         alt="..."
       />
       <div class="card-body">
-        <router-link class="text-dark text-decoration-none" :to="{name: 'Home'}">
+        <router-link class="text-dark text-decoration-none" :to="{name: 'DetailProduct'}">
           <h5 class="card-title mb-2">Men's formal suit - Black & White</h5>
         </router-link>
         <span class="text-danger my-1 font-weight-bold">$ 40.0</span>

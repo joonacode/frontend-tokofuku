@@ -1,14 +1,14 @@
 <template>
   <b-container fluid>
       <b-row>
-          <b-col cols="3" class="bg-warning sidebar">
-
+          <b-col cols="3" class="bg-white sidebar shadow-sm">
+            <MainSidebar class="mr-n5" />
           </b-col>
           <b-col cols="9" class="bg-light">
               <b-container class=" bg-white rounded mt-5 main">
               <b-row class="container">
                   <b-col cols="12">
-                      <h1 class="text-left mt-5 order">My Order</h1>
+                      <h1 class="text-left mt-5 order">My profile store</h1>
                       <h6 class="text-muted text-left">Manage your profile information</h6>
                       <div class="border-bottom mt-4"></div>
                   </b-col>
@@ -59,8 +59,12 @@
 </template>
 
 <script>
+import MainSidebar from '../components/layout/MainSidebar'
 export default {
-
+  name: 'storeProfile',
+  components: {
+    MainSidebar
+  }
 }
 </script>
 

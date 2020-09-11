@@ -1,5 +1,5 @@
 <template>
-<div class="container">
+<b-container>
         <div class="row">
             <div class="mt-4 col-12">
                 <carousel>
@@ -296,7 +296,7 @@
              </b-card-group>
         </div>
     </div>
-</div>
+</b-container>
 </template>
 
 <script>

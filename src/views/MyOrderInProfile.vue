@@ -1,27 +1,13 @@
 <template>
   <b-container fluid>
       <b-row>
-          <b-col cols="3" class="bg-warning sidebar">
-
+          <b-col cols="3" class="bg-white shadow-sm sidebar">
+              <SidebarProfile />
           </b-col>
           <b-col cols="9" class="bg-light">
               <b-container class=" bg-white rounded mt-5 main">
               <b-row class="container">
-                  <b-col cols="12">
-                      <h1 class="text-left mt-5 order">My Order</h1>
-                  </b-col>
-                  <b-col cols="12" class="border-bottom">
-                    <div>
-                        <b-nav>
-                            <b-nav-item href="#1" class="link">All Items</b-nav-item>
-                            <b-nav-item href="#2" class="link">Not Yet Paid</b-nav-item>
-                            <b-nav-item href="#2" class="link">Packed</b-nav-item>
-                            <b-nav-item href="#2" class="link">Sent</b-nav-item>
-                            <b-nav-item href="#2" class="link">Completed</b-nav-item>
-                            <b-nav-item href="#2" class="link">Order Cancel</b-nav-item>
-                        </b-nav>
-                    </div>
-                  </b-col>
+                <MyOrder />
               </b-row>
               </b-container>
           </b-col>
@@ -30,8 +16,14 @@
 </template>
 
 <script>
+import SidebarProfile from '../components/layout/SidebarProfile'
+import MyOrder from '../components/layout/MyOrder'
 export default {
-
+  name: 'MyOrderInProfile',
+  components: {
+    SidebarProfile,
+    MyOrder
+  }
 }
 </script>
 

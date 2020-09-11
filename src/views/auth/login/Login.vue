@@ -69,7 +69,7 @@ form {
 
 form :nth-child(2) {
   font-size: 15px;
-  font-weight: bolder;
+  font-weight: bold;
 }
 
 form :nth-child(3) button {

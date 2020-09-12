@@ -1,6 +1,5 @@
 <template>
   <div>
-    <MainNavbar />
     <div class="container mt-5">
       <h2 class="mb-3 font-weight-bold">My bag</h2>
       <div class="row" v-if="!empty">
@@ -48,24 +47,19 @@
         <h3 class="font-weight-bold text-dark mt-5">Your Cart Is Empty</h3>
       </div>
     </div>
-    <MainFooter />
   </div>
 </template>
 
 <script>
 import CartItem from '@/components/molecules/CartItem'
-import MainNavbar from '@/components/layout/MainNavbar'
-import MainFooter from '@/components/layout/MainFooter'
 
 export default {
   components: {
-    MainNavbar,
-    CartItem,
-    MainFooter
+    CartItem
   },
   data() {
     return {
-      empty: false
+      empty: true
     }
   }
 }

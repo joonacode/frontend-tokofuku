@@ -38,3 +38,9 @@
 body {
   font-family: 'Metropolis Regular' !important;
 }
+
+.btn-plus {
+  height: 40px;
+  width: 40px;
+  font-weight: bold;
+}

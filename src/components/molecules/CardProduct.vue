@@ -7,11 +7,14 @@
         alt="..."
       />
       <div class="card-body">
-        <router-link class="text-dark text-decoration-none" :to="{name: 'DetailProduct'}">
-          <h5 class="card-title mb-2">Men's formal suit - Black & White</h5>
+        <router-link
+          class="text-dark text-decoration-none"
+          :to="{name: 'DetailProduct', params: {id: product.id}}"
+        >
+          <h5 class="card-title mb-2">{{product.name}}</h5>
         </router-link>
-        <span class="text-danger my-1 font-weight-bold">$ 40.0</span>
-        <span class="text-muted d-block">Zalora Cloth</span>
+        <span class="text-danger my-1 font-weight-bold">{{product.price | currency}}</span>
+        <span class="text-muted d-block">{{product.storeName}}</span>
         <b-form-rating
           no-border
           readonly
@@ -25,32 +28,12 @@
       </div>
     </div>
   </div>
-  <!-- <b-card
-    title="Men Formal Suit Premium Quality"
-    img-src="https://ae01.alicdn.com/kf/HTB1uKsVRFXXXXaLXVXXq6xXFXXXo/Blazer-pria-pakaian-resmi-terbaru-desain-mantel-celana-tuxedo-jas-pria-kostum-celana-pernikahan-pernikahan-setelan.jpg"
-    img-alt="Image"
-    img-top
-    tag="article"
-    class="mb-2"
-  >
-    <b-card-text>
-      <span class="text-danger font-weight-bold">$ 40.0</span>
-      <br />
-      <span class="text-muted">Zalora Cloth</span>
-      <br />
-      <span class="text-muted">
-        <b-icon icon="star-fill" variant="warning"></b-icon>
-        <b-icon icon="star-fill" variant="warning"></b-icon>
-        <b-icon icon="star-fill" variant="warning"></b-icon>
-        <b-icon icon="star-fill" variant="warning"></b-icon>
-        <b-icon icon="star-fill"></b-icon>(10)
-      </span>
-    </b-card-text>
-  </b-card>-->
 </template>
 
 <script>
-export default {}
+export default {
+  props: ['product']
+}
 </script>
 
 <style scoped>

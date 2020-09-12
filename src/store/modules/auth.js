@@ -192,7 +192,7 @@ const actions = {
           name: 'Login'
         })
       } else if (error === 'Token expired' && status_code === 401) {
-        Vue.$toast.error('Your session is expired refresh the browser or logout')
+        Vue.$toast.error('Your session is expired, please login again')
         dispatch('logoutUser')
         router.push({
           name: 'Home'

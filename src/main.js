@@ -7,9 +7,11 @@ import '@/globalComponents.js'
 
 import VueToast from 'vue-toast-notification'
 import VueSweetalert2 from 'vue-sweetalert2'
+import VueCurrencyFilter from 'vue-currency-filter'
 import 'sweetalert2/dist/sweetalert2.min.css'
 import 'vue-toast-notification/dist/theme-default.css'
 import swal from './components/mixins/swal'
+import logout from './components/mixins/logout'
 
 import {
   BootstrapVue,
@@ -26,7 +28,11 @@ Vue.use(VueSweetalert2)
 Vue.use(VueToast, {
   position: 'bottom-left'
 })
+Vue.use(VueCurrencyFilter, {
+  symbol: 'Rp.'
+})
 Vue.mixin(swal)
+Vue.mixin(logout)
 // req.files multer multiple upload
 
 Vue.config.productionTip = false

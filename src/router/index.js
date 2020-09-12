@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Landing/HomePage'
+import Landing from '../views/Landing/index.vue'
 import Login from '../views/Auth/LoginPage'
 import VerifyAccount from '../views/Auth/LoginPage/ActivateAccount.vue'
 import Register from '../views/Auth/RegisterPage'
@@ -15,8 +16,28 @@ Vue.use(VueRouter)
 const routes = [ //
   {
     path: '/',
-    name: 'Home',
-    component: Home
+    name: 'Root',
+    component: Landing,
+    redirect: {
+      name: 'Home'
+    },
+    children: [ //
+      {
+        path: '/home',
+        name: 'Home',
+        component: Home
+      },
+      {
+        path: '/cart',
+        name: 'Cart',
+        component: Cart
+      },
+      {
+        path: '/detail-product/:id',
+        name: 'DetailProduct',
+        component: DetailProduct
+      }
+    ]
   },
   {
     path: '/login',
@@ -57,16 +78,6 @@ const routes = [ //
     meta: {
       requiresVisit: true
     }
-  },
-  {
-    path: '/cart',
-    name: 'Cart',
-    component: Cart
-  },
-  {
-    path: '/detail-product',
-    name: 'DetailProduct',
-    component: DetailProduct
   }
 ]
 

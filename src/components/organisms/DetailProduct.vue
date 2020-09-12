@@ -8,7 +8,7 @@
       <div class="col-md-4">
         <div class="main-img">
           <div class="big-img">
-            <img class="img-fluid" src="../../assets/img-product/big-img.png" />
+            <img class="img-fluid" :src="product.image" />
           </div>
           <div class="small-img mb-4">
             <img class="img-fluid" src="../../assets/img-product/small-img1.png" />
@@ -21,9 +21,12 @@
       </div>
       <div class="col-md-8">
         <div class="main-choice">
-          <div class="title-product">Baju muslim pira</div>
-          <div class="seller-name">Zalora Cloth</div>
-          <div class="star-seller">
+          <div class="title-product">{{product.name}}</div>
+          <router-link
+            :to="{name: 'Home'}"
+            class="seller-name text-decoration-none"
+          >{{product.storeName}}</router-link>
+          <div class="star-seller mt-4">
             <span class="fa fa-star checked"></span>
             <span class="fa fa-star checked"></span>
             <span class="fa fa-star checked"></span>
@@ -31,44 +34,68 @@
             <span class="fa fa-star"></span>
             <span>(10)</span>
           </div>
-          <div class="title-price">Price</div>
-          <div class="price">$ 20.0</div>
+          <div class="title-price mb-0">Price</div>
+          <div class="price mt-0">{{product.price | currency}}</div>
           <div class="title-color">Color</div>
           <!-- Button color -->
           <div class="button-color">
-            <input type="checkbox" />
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
+            <div class="custom-radio-color">
+              <input type="radio" class="radio-color" name="color" />
+              <span class="color-radio" style="background:#333"></span>
+            </div>
+            <div class="custom-radio-color">
+              <input type="radio" class="radio-color" name="color" />
+              <span class="color-radio" style="background:#ddd"></span>
+            </div>
+            <div class="custom-radio-color">
+              <input type="radio" class="radio-color" name="color" />
+              <span class="color-radio" style="background:green"></span>
+            </div>
           </div>
           <!-- Button Size && Jumlah -->
-          <div class="size">
+          <div class="size mb-4">
             <div>
-              Size
-              <br />
-              <span>-</span>
+              <p>Size</p>
+              <button class="btn btn-info mr-1 rounded-circle btn-plus">-</button>
               <span>38</span>
-              <span>+</span>
+              <button class="btn btn-light ml-1 rounded-pill btn-plus">+</button>
             </div>
             <div>
-              Jumlah
-              <br />
-              <span>-</span>
-              <span>2</span>
-              <span>+</span>
+              <p>Jumlah</p>
+              <button class="btn btn-info mr-1 rounded-circle btn-plus">-</button>
+              <span>{{stock}}</span>
+              <button class="btn btn-light ml-1 rounded-pill btn-plus">+</button>
             </div>
           </div>
-          <div class="mt-4 mb-5 d-flex justify-content-between align-items-center">
-            <g-button
+          <div class="mt-5 mb-5 button-main d-flex justify-content-between align-items-center">
+            <router-link
+              v-if="!isLogin"
+              :to="{name: 'Login'}"
               removeDefault
-              class="btn-outline-success rounded-pill mr-2 w-25 small-btn"
+              class="btn btn-outline-success rounded-pill small-res mr-2 w-25 small-btn"
+            >Chat</router-link>
+            <router-link
+              v-if="!isLogin"
+              :to="{name: 'Login'}"
+              removeDefault
+              class="btn btn-outline-success rounded-pill small-res mr-2 w-25 small-btn"
+            >Add Bag</router-link>
+            <router-link
+              v-if="!isLogin"
+              :to="{name: 'Login'}"
+              class="btn btn-success rounded-pill small-res w-75 medium-btn"
+            >Buy Now</router-link>
+            <g-button
+              v-if="isLogin"
+              removeDefault
+              class="btn-outline-success small-res rounded-pill mr-2 w-25 small-btn"
             >Chat</g-button>
             <g-button
+              v-if="isLogin"
               removeDefault
-              class="btn-outline-success rounded-pill mr-2 w-25 small-btn"
+              class="btn-outline-success small-res rounded-pill mr-2 w-25 small-btn"
             >Add Bag</g-button>
-            <g-button class="w-75 medium-btn">Buy Now</g-button>
+            <g-button v-if="isLogin" class="w-75 small-res medium-btn">Buy Now</g-button>
           </div>
         </div>
       </div>
@@ -79,23 +106,11 @@
           <div class="title-condition">
             Condition
             <br />
-            <span>New</span>
+            <span>{{product.conditionProduct}}</span>
           </div>
           <div class>
-            <span class="title-condition d-block">Descriptionxxx</span>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium, aspernatur omnis! Modi voluptatum officia quasi ducimus</p>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium, aspernatur omnis! Modi voluptatum officia quasi ducimus
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptate, eos, illo sapiente possimus dolorem ex veritatis est veniam
-              quae numquam nesciunt inventore accusamus maiores consequatur hic nisi ipsa ea facilis laborum asperiores fugit magnam dignissimos
-              aperiam. Perspiciatis repellat cupiditate minus quod fugit provident id maxime corrupti beatae! Ut, quaerat porro?
-            </p>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium, aspernatur omnis! Modi voluptatum officia quasi ducimus
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Distinctio sequi quidem sapiente fugiat inventore doloremque aliquid
-              laboriosam dignissimos cumque maiores. Consequatur provident quae quo minus expedita ipsa repellat iste sapiente.
-            </p>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium, aspernatur omnis! Modi voluptatum officia quasi ducimus</p>
+            <span class="title-condition d-block">Description</span>
+            <div>{{product.description}}</div>
           </div>
         </div>
       </div>
@@ -153,27 +168,57 @@
         <p class="text-muted text-left">You’ve never seen it before!</p>
       </div>
     </div>
-    <ProductList />
+    <slot name="randomProduct"></slot>
   </div>
 </template>
 
 <script>
-import ProductList from '@/components/molecules/ProductList'
-
 import BreadcrumbItem from '@/components/molecules/BreadcrumbItem'
+import { mapGetters } from 'vuex'
 export default {
   name: 'DetailProduct',
   data() {
-    return {}
+    return {
+      stock: 0
+    }
   },
+  props: ['product'],
   components: {
-    BreadcrumbItem,
-    ProductList
-  }
+    BreadcrumbItem
+  },
+  computed: mapGetters('auth', ['isLogin'])
 }
 </script>
 
 <style scoped>
+@media screen and (max-width: 400px) {
+  .button-main {
+    flex-direction: column;
+  }
+  .small-res {
+    width: 100% !important;
+    margin-bottom: 10px;
+  }
+}
+.color-radio {
+  display: inline-block;
+  width: 32px;
+  height: 32px;
+  margin-left: 10px;
+  border-radius: 100%;
+}
+
+.custom-radio-color {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.radio-color {
+  position: absolute;
+  left: 20px;
+}
+
 /* Class Main-img */
 .main-img {
   /* border: 1px solid black; */
@@ -288,23 +333,13 @@ export default {
   font-weight: bolder;
   margin-bottom: 10px;
 }
-.main-choice .button-color {
-  /* border: 1px solid black; */
 
-  font-size: 22px;
-  font-weight: bolder;
-  margin-bottom: 10px;
+.button-color {
+  display: flex;
+  margin-bottom: 20px;
 }
-.main-choice .button-color span {
-  /* border: 1px solid black; */
-  display: inline-block;
-  width: 32px;
-  margin-left: 10px;
 
-  border-radius: 100%;
-}
-.main-choice .button-color :first-child {
-  background: #1a1a1a;
+/* .main-choice .button-color :first-child {
   margin-left: 0;
   height: 32px;
 }
@@ -319,7 +354,7 @@ export default {
 .main-choice .button-color :last-child {
   background: #42d86c;
   height: 32px;
-}
+} */
 
 /* Class size */
 

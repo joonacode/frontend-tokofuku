@@ -33,13 +33,27 @@
             <router-link class="mr-4" :to="{name: 'Cart'}">
               <img :src="require(`@/assets/images/bell.png`)" />
             </router-link>
-            <router-link class="mr-4" :to="{name: 'Cart'}">
+            <router-link class="mr-3" :to="{name: 'Cart'}">
               <img :src="require(`@/assets/images/mail.png`)" />
             </router-link>
-            <router-link class="mr-4" :to="{name: 'Cart'}">
-              <b-avatar v-if="getDetailUser.image" :src="getDetailUser.image"></b-avatar>
-              <b-avatar v-else></b-avatar>
-            </router-link>
+            <div class="dropdown d-inline-block">
+              <button
+                class="btn dropdown-toggle"
+                type="button"
+                id="dropdownMenuButton"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+              >
+                <b-avatar v-if="getDetailUser.image" :src="getDetailUser.image"></b-avatar>
+                <b-avatar v-else></b-avatar>
+              </button>
+              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" href="#">Profile</a>
+                <a class="dropdown-item" href="#">Setting</a>
+                <button class="dropdown-item" @click="logoutMixin">Logout</button>
+              </div>
+            </div>
           </div>
           <div v-if="!isLogin">
             <router-link

@@ -14,7 +14,8 @@ export default {
     this.interceptorsRequest()
     this.interceptorsResponse()
     // const id = idUser || null
-    this.detailUser()
+    const token = localStorage.getItem('token')
+    if (token) this.detailUser()
   }
 }
 </script>

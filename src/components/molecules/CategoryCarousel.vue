@@ -6,16 +6,36 @@
     :nav="false"
     :autoplayHoverPause="true"
   >
-    <img :src="require(`@/assets/Group 1236.png`)" class="image" alt="image" />
-    <img :src="require(`@/assets/Group 1235.jpg`)" alt="image" class="image" />
-    <img :src="require(`@/assets/Group 1238.png`)" alt="image" class="image" />
-    <img :src="require(`@/assets/Group 1239.png`)" alt="image" class="image" />
-    <img :src="require(`@/assets/Group 1240.png`)" alt="image" class="image" />
-    <img :src="require(`@/assets/Group 1241.png`)" alt="image" class="image" />
-    <img :src="require(`@/assets/Group 1242.png`)" alt="image" class="image" />
-    <img :src="require(`@/assets/Group 1243.png`)" alt="image" class="image" />
-    <img :src="require(`@/assets/Group 1244.png`)" alt="image" class="image" />
-    <img :src="require(`@/assets/Group 1245.png`)" alt="image" class="image" />
+    <router-link :to="{name: 'Login'}">
+      <img :src="require(`@/assets/Group 1236.png`)" class="image" alt="image" />
+    </router-link>
+    <router-link :to="{name: 'Login'}">
+      <img :src="require(`@/assets/Group 1235.jpg`)" alt="image" class="image" />
+    </router-link>
+    <router-link :to="{name: 'Login'}">
+      <img :src="require(`@/assets/Group 1238.png`)" alt="image" class="image" />
+    </router-link>
+    <router-link :to="{name: 'Login'}">
+      <img :src="require(`@/assets/Group 1239.png`)" alt="image" class="image" />
+    </router-link>
+    <router-link :to="{name: 'Login'}">
+      <img :src="require(`@/assets/Group 1240.png`)" alt="image" class="image" />
+    </router-link>
+    <router-link :to="{name: 'Login'}">
+      <img :src="require(`@/assets/Group 1241.png`)" alt="image" class="image" />
+    </router-link>
+    <router-link :to="{name: 'Login'}">
+      <img :src="require(`@/assets/Group 1242.png`)" alt="image" class="image" />
+    </router-link>
+    <router-link :to="{name: 'Login'}">
+      <img :src="require(`@/assets/Group 1243.png`)" alt="image" class="image" />
+    </router-link>
+    <router-link :to="{name: 'Login'}">
+      <img :src="require(`@/assets/Group 1244.png`)" alt="image" class="image" />
+    </router-link>
+    <router-link :to="{name: 'Login'}">
+      <img :src="require(`@/assets/Group 1245.png`)" alt="image" class="image" />
+    </router-link>
     <template slot="prev">
       <span class="prev">
         <img :src="require(`@/assets/images/prev.png`)" alt="next" />

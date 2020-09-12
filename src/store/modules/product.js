@@ -2,14 +2,25 @@ import Product from '@/apis/Product'
 
 // State
 const state = () => ({
+  allProducts: [],
   newProducts: [],
   popularProducts: [],
   randomProducts: [],
-  detailProduct: {}
+  detailProduct: {},
+  currentPage: 1,
+  totalProduct: 0,
+  totalPages: 0,
+  showSearch: false,
+  searchInputText: '',
+  ordering: {
+    order: 'id',
+    sort: 'desc'
+  }
 })
 
 // Getters
 const getters = {
+  getAllProducts: (state) => state.allProducts,
   getNewProducts: (state) => state.newProducts,
   getPopularProducts: (state) => state.popularProducts,
   getRandomProducts: (state) => state.randomProducts,
@@ -18,6 +29,67 @@ const getters = {
 
 // Actions
 const actions = {
+  allProducts({
+    commit,
+    dispatch
+  }, {
+    page,
+    order,
+    sort,
+    search
+  }) {
+    dispatch('changeIsLoading', true, {
+      root: true
+    })
+    return new Promise((resolve, reject) => {
+      Product.all(page, order, sort, search)
+        .then(response => {
+          dispatch('changeIsLoading', false, {
+            root: true
+          })
+          commit('ALL_PRODUCTS', response.data)
+          resolve(response.data)
+        })
+        .catch(err => {
+          commit('ALL_PRODUCTS', err.response)
+          dispatch('changeIsLoading', false, {
+            root: true
+          })
+          reject(err.response)
+        })
+    })
+  },
+  allCategoryProducts({
+    commit,
+    dispatch
+  }, {
+    idCategory,
+    page,
+    order,
+    sort,
+    search
+  }) {
+    dispatch('changeIsLoading', true, {
+      root: true
+    })
+    return new Promise((resolve, reject) => {
+      Product.allByCategory(idCategory, page, order, sort, search)
+        .then(response => {
+          dispatch('changeIsLoading', false, {
+            root: true
+          })
+          commit('ALL_PRODUCTS', response.data)
+          resolve(response.data)
+        })
+        .catch(err => {
+          commit('ALL_PRODUCTS', err.response)
+          dispatch('changeIsLoading', false, {
+            root: true
+          })
+          reject(err.response)
+        })
+    })
+  },
   newProducts({
     commit,
     dispatch
@@ -119,6 +191,17 @@ const actions = {
 // Mutations
 const mutations = {
 
+  ALL_PRODUCTS: (state, payload) => {
+    if (payload.error) {
+      state.totalPages = 0
+      state.totalProduct = 0
+      state.allProducts = []
+    } else {
+      state.allProducts = payload.results
+      state.totalPages = payload.total_pages
+      state.totalProduct = payload.total
+    }
+  },
   NEW_PRODUCTS: (state, payload) => {
     state.newProducts = payload.results
   },
@@ -129,7 +212,20 @@ const mutations = {
     state.randomProducts = payload.results
   },
   DETAIL_PRODUCT: (state, payload) => {
-    state.detailProduct = payload.results[0]
+    const result = payload.results[0]
+    state.detailProduct = {
+      ...result,
+      colorArr: result.color.split(', '),
+      sizeArr: result.size.split(', ')
+    }
+  },
+  UPDATE_SEARCH_INPUT_TEXT: (state, data) => {
+    state.searchInputText = data
+  },
+
+  CHANGE_ORDERING: (state, data) => {
+    state.ordering.sort = data.sort
+    state.ordering.order = data.order
   }
 
 }

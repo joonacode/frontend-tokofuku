@@ -1,6 +1,9 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Landing/HomePage'
+import AllProduct from '../views/Landing/HomePage/AllProduct.vue'
+import SearchProduct from '../views/Landing/HomePage/SearchProduct.vue'
+import CategoryProduct from '../views/Landing/HomePage/CategoryProduct.vue'
 import Landing from '../views/Landing/index.vue'
 import Login from '../views/Auth/LoginPage'
 import VerifyAccount from '../views/Auth/LoginPage/ActivateAccount.vue'
@@ -36,6 +39,21 @@ const routes = [ //
         path: '/detail-product/:id',
         name: 'DetailProduct',
         component: DetailProduct
+      },
+      {
+        path: '/category/:id',
+        name: 'Category',
+        component: CategoryProduct
+      },
+      {
+        path: '/home/all',
+        name: 'AllProduct',
+        component: AllProduct
+      },
+      {
+        path: '/home/search',
+        name: 'SearchProduct',
+        component: SearchProduct
       }
     ]
   },
@@ -84,7 +102,13 @@ const routes = [ //
 const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
-  routes
+  routes,
+  scrollBehavior(to, from, savedPosition) {
+    return {
+      x: 0,
+      y: 0
+    }
+  }
 })
 
 router.beforeEach((to, from, next) => {

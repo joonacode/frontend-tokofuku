@@ -8,3 +8,6 @@ Vue.component('g-button',
 Vue.component('g-brand',
   () => import('./components/atoms/brand.vue')
 )
+Vue.component('g-notfound',
+  () => import('./components/atoms/NotFoundMessage.vue')
+)

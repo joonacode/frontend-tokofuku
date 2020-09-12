@@ -39,32 +39,24 @@
           <div class="title-color">Color</div>
           <!-- Button color -->
           <div class="button-color">
-            <div class="custom-radio-color">
+            <div class="custom-radio-color" v-for="(color, i) in product.colorArr" :key="i">
               <input type="radio" class="radio-color" name="color" />
-              <span class="color-radio" style="background:#333"></span>
-            </div>
-            <div class="custom-radio-color">
-              <input type="radio" class="radio-color" name="color" />
-              <span class="color-radio" style="background:#ddd"></span>
-            </div>
-            <div class="custom-radio-color">
-              <input type="radio" class="radio-color" name="color" />
-              <span class="color-radio" style="background:green"></span>
+              <span class="color-radio shadow-sm" :style="{background:color}"></span>
             </div>
           </div>
           <!-- Button Size && Jumlah -->
           <div class="size mb-4">
-            <div>
+            <div class="mr-3">
               <p>Size</p>
-              <button class="btn btn-info mr-1 rounded-circle btn-plus">-</button>
-              <span>38</span>
-              <button class="btn btn-light ml-1 rounded-pill btn-plus">+</button>
+              <select class="form-control">
+                <option v-for="(size, i) in product.sizeArr" :key="i" :value="size">{{size}}</option>
+              </select>
             </div>
             <div>
               <p>Jumlah</p>
-              <button class="btn btn-info mr-1 rounded-circle btn-plus">-</button>
+              <button class="btn btn-info mr-1 rounded-circle btn-plus" @click="minQty">-</button>
               <span>{{stock}}</span>
-              <button class="btn btn-light ml-1 rounded-pill btn-plus">+</button>
+              <button class="btn btn-light ml-1 rounded-pill btn-plus" @click="plusQty">+</button>
             </div>
           </div>
           <div class="mt-5 mb-5 button-main d-flex justify-content-between align-items-center">
@@ -110,7 +102,7 @@
           </div>
           <div class>
             <span class="title-condition d-block">Description</span>
-            <div>{{product.description}}</div>
+            <div class="description-text">{{product.description}}</div>
           </div>
         </div>
       </div>
@@ -186,6 +178,14 @@ export default {
   components: {
     BreadcrumbItem
   },
+  methods: {
+    minQty() {
+      if (this.stock > 1) this.stock -= 1
+    },
+    plusQty() {
+      if (this.stock < this.product.stock) this.stock += 1
+    }
+  },
   computed: mapGetters('auth', ['isLogin'])
 }
 </script>
@@ -199,6 +199,9 @@ export default {
     width: 100% !important;
     margin-bottom: 10px;
   }
+}
+.description-text {
+  color: #9b9b9b;
 }
 .color-radio {
   display: inline-block;

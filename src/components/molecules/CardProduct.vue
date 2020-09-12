@@ -11,7 +11,9 @@
           class="text-dark text-decoration-none"
           :to="{name: 'DetailProduct', params: {id: product.id}}"
         >
-          <h5 class="card-title mb-2">{{product.name}}</h5>
+          <h5
+            class="card-title mb-2"
+          >{{product.name.length > 35 ? product.name.substr(0,35)+'...' : product.name}}</h5>
         </router-link>
         <span class="text-danger my-1 font-weight-bold">{{product.price | currency}}</span>
         <span class="text-muted d-block">{{product.storeName}}</span>
@@ -47,6 +49,12 @@ export default {
   width: 100%;
   object-fit: cover;
   object-position: center;
+}
+
+@media screen and (max-width: 575px) {
+  .card-product img {
+    height: 100%;
+  }
 }
 
 .card-product .card-title {

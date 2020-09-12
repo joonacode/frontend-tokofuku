@@ -1,40 +1,41 @@
 <template>
-  <div>
-    <div class="container">
-      <div class="row">
-        <div class="mt-4 col-12">
-          <BannerCarousel />
-        </div>
-        <div class="col-12 mt-3">
-          <h2 class="text-left text-black font-weight-bold">Category</h2>
-          <p class="text-muted text-left">what are you currently looking for</p>
-        </div>
-        <div class="col-12 mt-1">
-          <CategoryCarousel />
-        </div>
+  <div class="container">
+    <div class="row">
+      <div class="mt-4 col-12">
+        <BannerCarousel />
       </div>
-      <div class="row">
-        <div class="col-md-12 mt-5">
-          <h2 class="text-left text-black font-weight-bold">New</h2>
-          <p class="text-muted text-left">you've never seen it before</p>
-        </div>
+      <div class="col-12 mt-3">
+        <h2 class="text-left text-black font-weight-bold">Category</h2>
+        <p class="text-muted text-left">what are you currently looking for</p>
       </div>
-      <div class="row">
-        <CardProduct v-for="product in getNewProducts" :key="product.id" :product="product" />
+      <div class="col-12 mt-1">
+        <CategoryCarousel />
       </div>
-      <div class="row">
-        <div class="col-md-12 mt-5">
-          <h2 class="text-left text-black font-weight-bold">Popular</h2>
-          <p class="text-muted text-left">Find clothes that are trending recently</p>
-        </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12 mt-5">
+        <h2 class="text-left text-black font-weight-bold">New</h2>
+        <p class="text-muted text-left">you've never seen it before</p>
       </div>
-      <div class="row">
-        <CardProduct
-          v-for="popularProduct in getPopularProducts"
-          :key="popularProduct.id"
-          :product="popularProduct"
-        />
+    </div>
+    <div class="row">
+      <CardProduct v-for="product in getNewProducts" :key="product.id" :product="product" />
+    </div>
+    <div class="row">
+      <div class="col-md-12 mt-5">
+        <h2 class="text-left text-black font-weight-bold">Popular</h2>
+        <p class="text-muted text-left">Find clothes that are trending recently</p>
       </div>
+    </div>
+    <div class="row">
+      <CardProduct
+        v-for="popularProduct in getPopularProducts"
+        :key="popularProduct.id"
+        :product="popularProduct"
+      />
+    </div>
+    <div class="text-center mt-3">
+      <router-link :to="{name: 'AllProduct'}" class="btn btn-success shadow">View All Product</router-link>
     </div>
   </div>
 </template>
@@ -48,11 +49,13 @@ import { mapActions, mapGetters } from 'vuex'
 export default {
   components: { BannerCarousel, CategoryCarousel, CardProduct },
   methods: {
-    ...mapActions('product', ['newProducts', 'popularProducts'])
+    ...mapActions('product', ['newProducts', 'popularProducts']),
+    ...mapActions('category', ['allCategories'])
   },
   created() {
     this.newProducts()
     this.popularProducts()
+    this.allCategories()
   },
   computed: mapGetters('product', ['getNewProducts', 'getPopularProducts'])
 }

@@ -1,12 +1,15 @@
 <template>
   <div>
-    <DetailProduct :product="getDetailProduct">
+    <DetailProduct v-if="getDetailProduct.name" :product="getDetailProduct">
       <template #randomProduct>
         <div class="row">
           <CardProduct v-for="product in getRandomProducts" :key="product.id" :product="product" />
         </div>
       </template>
     </DetailProduct>
+    <div v-if="!getLoading">
+      <g-notfound v-if="!getDetailProduct.name" />
+    </div>
   </div>
 </template>
 
@@ -23,6 +26,9 @@ export default {
     this.randomProducts()
     this.detailProduct(id)
   },
-  computed: mapGetters('product', ['getRandomProducts', 'getDetailProduct'])
+  computed: {
+    ...mapGetters('product', ['getRandomProducts', 'getDetailProduct']),
+    ...mapGetters(['getLoading'])
+  }
 }
 </script>

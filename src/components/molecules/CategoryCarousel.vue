@@ -1,40 +1,18 @@
 <template>
   <carousel
+    v-if="getCategories.length > 0"
     :margin="20"
     :responsive="{0:{items:1},400:{items:2},600:{items:3},800:{items:4},1000:{items:5}}"
     :autoplay="true"
     :nav="false"
     :autoplayHoverPause="true"
   >
-    <router-link :to="{name: 'Login'}">
-      <img :src="require(`@/assets/Group 1236.png`)" class="image" alt="image" />
-    </router-link>
-    <router-link :to="{name: 'Login'}">
-      <img :src="require(`@/assets/Group 1235.jpg`)" alt="image" class="image" />
-    </router-link>
-    <router-link :to="{name: 'Login'}">
-      <img :src="require(`@/assets/Group 1238.png`)" alt="image" class="image" />
-    </router-link>
-    <router-link :to="{name: 'Login'}">
-      <img :src="require(`@/assets/Group 1239.png`)" alt="image" class="image" />
-    </router-link>
-    <router-link :to="{name: 'Login'}">
-      <img :src="require(`@/assets/Group 1240.png`)" alt="image" class="image" />
-    </router-link>
-    <router-link :to="{name: 'Login'}">
-      <img :src="require(`@/assets/Group 1241.png`)" alt="image" class="image" />
-    </router-link>
-    <router-link :to="{name: 'Login'}">
-      <img :src="require(`@/assets/Group 1242.png`)" alt="image" class="image" />
-    </router-link>
-    <router-link :to="{name: 'Login'}">
-      <img :src="require(`@/assets/Group 1243.png`)" alt="image" class="image" />
-    </router-link>
-    <router-link :to="{name: 'Login'}">
-      <img :src="require(`@/assets/Group 1244.png`)" alt="image" class="image" />
-    </router-link>
-    <router-link :to="{name: 'Login'}">
-      <img :src="require(`@/assets/Group 1245.png`)" alt="image" class="image" />
+    <router-link
+      v-for="category in getCategories"
+      :key="category.id"
+      :to="{name: 'Category', params:{id: category.id}}"
+    >
+      <img :src="category.image" class="image" alt="image" />
     </router-link>
     <template slot="prev">
       <span class="prev">
@@ -52,9 +30,18 @@
 
 <script>
 import carousel from 'vue-owl-carousel'
+import { mapActions, mapGetters } from 'vuex'
 
 export default {
-  components: { carousel }
+  components: { carousel },
+  methods: mapActions('category', ['allCategories']),
+  mounted() {
+    this.allCategories()
+  },
+  computed: {
+    ...mapGetters('category', ['getCategories']),
+    ...mapGetters(['getLoading'])
+  }
 }
 </script>
 

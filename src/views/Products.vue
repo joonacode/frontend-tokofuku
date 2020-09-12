@@ -43,9 +43,9 @@
 </template>
 
 <script>
-import CardProduct from '../components/layout/CardProduct'
-import CorouselCategory from '../components/layout/CorouselCategory'
-import CorouselBanner from '../components/layout/CorouselBanner'
+import CardProduct from '../components/molecules/CardProduct'
+import CorouselCategory from '../components/molecules/CorouselCategory'
+import CorouselBanner from '../components/molecules/CorouselBanner'
 
 export default {
   components: {

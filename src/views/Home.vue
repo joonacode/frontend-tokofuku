@@ -4,7 +4,9 @@
     <!-- <g-button cusClass="btn-danger mr-2" @click="LinkLogin">Login</g-button> -->
     <g-button cusClass="btn-primary">Global Button</g-button>|
     <router-link class="btn btn-primary" to="/login">Login</router-link>|
-    <router-link class="btn btn-primary" to="/detailproduct">detail product</router-link>
+    <router-link class="btn btn-primary" to="/detailproduct">detail product</router-link>|
+    <router-link class="btn btn-primary" to="/chat">Chat</router-link>|
+    <router-link class="btn btn-primary" to="/chatempety">Chat Empety</router-link>|
   </div>
 </template>
 

@@ -489,6 +489,6 @@ export default {
 }
 
 .product-review .rating .review-rating .progres-rating .progres {
-  height: 20px;
+  height: 11px;
 }
 </style>

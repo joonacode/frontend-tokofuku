@@ -14,48 +14,20 @@
     <!-- =====================================          COLLAPSE PARENT 1         ===================================== -->
             <div class="text-left mt-5 ml-5">
                 <a data-toggle="collapse" href="#collapseExample" aria-expanded="true" aria-controls="collapseExample" class="linkCollapse text-dark">
-                <b-icon icon="person-circle" variant="primary"></b-icon> Store <b-icon icon="chevron-down" variant="dark" class="ml-5 icons"></b-icon>
+                <b-icon icon="person-circle" variant="primary"></b-icon> My account
                 </a>
             </div>
-    <!-- =====================================          COLLAPSE CHILD 1         ===================================== -->
-            <div class="collapse text-left mt-4" id="collapseExample">
-                <div class="ml-5">
-                <router-link to="" class="mb-auto ml-5 text-dark linkChild text-muted">Store profile</router-link>
-                </div>
-            </div>
-        </b-col>
-        <b-col cols="12">
     <!-- =====================================          COLLAPSE PARENT 2         ===================================== -->
             <div class="text-left mt-5 ml-5">
                 <a data-toggle="collapse" href="#collapseExample1" aria-expanded="true" aria-controls="collapseExample" class="linkCollapse text-dark">
-                    <b-icon icon="box-seam" variant="white" class='bg-warning rounded-circle'></b-icon> Product <b-icon icon="chevron-down" variant="dark" class="ml-5 icons"></b-icon>
+                    <b-icon icon="geo-alt" variant="white" class='bg-warning rounded-circle'></b-icon> Shipping Adrress
                 </a>
             </div>
-            <div class="collapse text-left mt-4" id="collapseExample1">
-    <!-- =====================================          COLLAPSE CHILD 2         ===================================== -->
-                <div class="ml-5">
-                    <router-link to="" class="mb-auto ml-5 text-dark linkChild text-muted">My products</router-link>
-                </div>
-                <div class="ml-5 mt-4">
-                    <router-link to="" class="mb-auto ml-5 text-dark linkChild text-muted">Selling products</router-link>
-                </div>
-            </div>
-        </b-col>
     <!-- =====================================          COLLAPSE PARENT 3         ===================================== -->
-        <b-col cols="12">
             <div class="text-left mt-5 ml-5">
                 <a data-toggle="collapse" href="#collapseExample2" aria-expanded="true" aria-controls="collapseExample" class="linkCollapse text-dark">
-                    <b-icon icon="cart3" variant="white" class="bg-danger rounded-circle"></b-icon> Order <b-icon icon="chevron-down" variant="dark" class="ml-5 icons"></b-icon>
+                    <b-icon icon="file-post-fill" variant="white" class="bg-danger rounded-circle"></b-icon> My order
                 </a>
-            </div>
-            <div class="collapse text-left mt-4" id="collapseExample2">
-    <!-- =====================================          COLLAPSE CHILD 3         ===================================== -->
-                <div class="ml-5">
-                    <router-link to="" class="mb-auto ml-5 text-dark linkChild text-muted">My order</router-link>
-                </div>
-                <div class="ml-5 mt-4">
-                    <router-link to="" class="mb-auto ml-5 text-dark linkChild text-muted">Order cancel</router-link>
-                </div>
             </div>
         </b-col>
     </b-row>

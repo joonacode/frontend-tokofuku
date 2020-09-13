@@ -7,6 +7,7 @@ import ConfirmPassword from '../views/auth/resetPassword/ConfirmPassword.vue'
 import DetailProduct from '../components/organizm/detailproduct.vue'
 import Chat from '../components/organizm/Chat.vue'
 import Chatempety from '../components/organizm/ChatEmpety.vue'
+import SellingProduct from '../components/organizm/SellingProduct.vue'
 
 Vue.use(VueRouter)
 
@@ -45,6 +46,11 @@ const routes = [
     path: '/chatempety',
     name: 'Chatempety',
     component: Chatempety
+  },
+  {
+    path: '/sellingproduct',
+    name: 'SellingProduct',
+    component: SellingProduct
   },
   {
     path: '/about',

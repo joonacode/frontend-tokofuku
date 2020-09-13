@@ -7,6 +7,7 @@
     <router-link class="btn btn-primary" to="/detailproduct">detail product</router-link>|
     <router-link class="btn btn-primary" to="/chat">Chat</router-link>|
     <router-link class="btn btn-primary" to="/chatempety">Chat Empety</router-link>|
+    <router-link class="btn btn-primary" to="/sellingproduct">Selling product</router-link>|
   </div>
 </template>
 

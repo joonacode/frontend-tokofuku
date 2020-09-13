@@ -4,6 +4,7 @@ import Product from '@/apis/Product'
 const state = () => ({
   allProducts: [],
   newProducts: [],
+  myProducts: [],
   popularProducts: [],
   randomProducts: [],
   detailProduct: {},
@@ -24,7 +25,8 @@ const getters = {
   getNewProducts: (state) => state.newProducts,
   getPopularProducts: (state) => state.popularProducts,
   getRandomProducts: (state) => state.randomProducts,
-  getDetailProduct: (state) => state.detailProduct
+  getDetailProduct: (state) => state.detailProduct,
+  getMyProducts: (state) => state.myProducts
 }
 
 // Actions
@@ -83,6 +85,31 @@ const actions = {
         })
         .catch(err => {
           commit('ALL_PRODUCTS', err.response)
+          dispatch('changeIsLoading', false, {
+            root: true
+          })
+          reject(err.response)
+        })
+    })
+  },
+  myProducts({
+    commit,
+    dispatch
+  }) {
+    dispatch('changeIsLoading', true, {
+      root: true
+    })
+    return new Promise((resolve, reject) => {
+      Product.myProduct()
+        .then(response => {
+          dispatch('changeIsLoading', false, {
+            root: true
+          })
+          commit('MY_PRODUCTS', response.data)
+          resolve(response.data)
+        })
+        .catch(err => {
+          commit('MY_PRODUCTS', err.response)
           dispatch('changeIsLoading', false, {
             root: true
           })
@@ -200,6 +227,13 @@ const mutations = {
       state.allProducts = payload.results
       state.totalPages = payload.total_pages
       state.totalProduct = payload.total
+    }
+  },
+  MY_PRODUCTS: (state, payload) => {
+    if (payload.error) {
+      state.myProducts = []
+    } else {
+      state.myProducts = payload.results
     }
   },
   NEW_PRODUCTS: (state, payload) => {

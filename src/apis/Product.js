@@ -20,5 +20,8 @@ export default {
   },
   productById(id) {
     return Api.get(`${BASE_URL}/${id}`)
+  },
+  myProduct() {
+    return Api.get(`${BASE_URL}/my-product`)
   }
 }

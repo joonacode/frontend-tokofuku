@@ -36,6 +36,30 @@ const actions = {
         })
     })
   },
+  myOrderStatus({
+    commit,
+    dispatch
+  }, status) {
+    dispatch('changeIsLoading', true, {
+      root: true
+    })
+    return new Promise((resolve, reject) => {
+      Order.myOrderStatus(status)
+        .then(response => {
+          dispatch('changeIsLoading', false, {
+            root: true
+          })
+          commit('MY_ORDERS', response.data)
+          resolve(response.data)
+        })
+        .catch(err => {
+          dispatch('changeIsLoading', false, {
+            root: true
+          })
+          reject(err.response)
+        })
+    })
+  },
   postOrder({
     commit,
     dispatch
@@ -45,6 +69,33 @@ const actions = {
     })
     return new Promise((resolve, reject) => {
       Order.post(data)
+        .then(response => {
+          dispatch('changeIsLoading', false, {
+            root: true
+          })
+          resolve(response.data)
+          dispatch('myOrders')
+        })
+        .catch(err => {
+          dispatch('changeIsLoading', false, {
+            root: true
+          })
+          reject(err.response)
+        })
+    })
+  },
+  updateStatusOrder({
+    commit,
+    dispatch
+  }, {
+    status,
+    id
+  }) {
+    dispatch('changeIsLoading', true, {
+      root: true
+    })
+    return new Promise((resolve, reject) => {
+      Order.updateStatus(status, id)
         .then(response => {
           dispatch('changeIsLoading', false, {
             root: true

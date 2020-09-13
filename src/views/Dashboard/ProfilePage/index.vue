@@ -89,26 +89,30 @@ export default {
       this.fileImage = this.$refs.image.files[0]
     },
     updateProfileAction() {
-      // eslint-disable-next-line prefer-const
-      let formData = new FormData()
-      formData.append('image', this.fileImage)
-      formData.append('name', this.getDetailUser.name)
-      formData.append('phone', this.getDetailUser.phone)
-      formData.append('gender', this.getDetailUser.gender)
-      formData.append('dateBirth', this.getDetailUser.dateBirth)
-      formData.append('oldImage', this.getDetailUser.image)
-      this.updateProfile({ data: formData, id: this.getDetailUser.id })
-        .then((response) => {
-          this.toastSuccess('Profile Updated')
-          this.fileImage = ''
-        })
-        .catch((err) => {
-          this.toastError(
-            err.data.error.sqlMessage
-              ? err.data.error.sqlMessage
-              : err.data.error.join(', ')
-          )
-        })
+      if (this.fileImage.size > 2097152) {
+        this.toastError('Max file size 2 mb')
+      } else {
+        // eslint-disable-next-line prefer-const
+        let formData = new FormData()
+        formData.append('image', this.fileImage)
+        formData.append('name', this.getDetailUser.name)
+        formData.append('phone', this.getDetailUser.phone)
+        formData.append('gender', this.getDetailUser.gender)
+        formData.append('dateBirth', this.getDetailUser.dateBirth)
+        formData.append('oldImage', this.getDetailUser.image)
+        this.updateProfile({ data: formData, id: this.getDetailUser.id })
+          .then((response) => {
+            this.toastSuccess('Profile Updated')
+            this.fileImage = ''
+          })
+          .catch((err) => {
+            this.toastError(
+              err.data.error.sqlMessage
+                ? err.data.error.sqlMessage
+                : err.data.error.join(', ')
+            )
+          })
+      }
     }
   },
   mounted() {

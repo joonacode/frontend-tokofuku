@@ -17,6 +17,8 @@ import Cart from '../views/Landing/CartPage'
 import DetailProduct from '../views/Landing/DetailPage'
 import ForgotPassword from '../views/Auth/ForgotPasswordPage'
 import ResetPassword from '../views/Auth/ResetPasswordPage'
+import MyOrder from '../views/Dashboard/MyOrderPage'
+import MyProduct from '../views/Dashboard/MyProductPage'
 import store from '../store'
 
 Vue.use(VueRouter)
@@ -91,12 +93,17 @@ const routes = [ //
       {
         path: 'my-products',
         name: 'MyProducts',
-        component: ProfileStore
+        component: MyProduct
       },
       {
         path: 'shipping-address',
         name: 'ShippingAddress',
         component: ShippingAddress
+      },
+      {
+        path: 'my-order',
+        name: 'MyOrder',
+        component: MyOrder
       }
     ]
   },

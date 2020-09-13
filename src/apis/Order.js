@@ -10,6 +10,14 @@ export default {
     return Api.post(`${BASE_URL}`, data)
   },
   myOrder() {
-    return Api.post(`${BASE_URL}/myorder`)
+    return Api.get(`${BASE_URL}/myorder`)
+  },
+  myOrderStatus(status) {
+    return Api.get(`${BASE_URL}/status/${status}`)
+  },
+  updateStatus(status, id) {
+    return Api.patch(`${BASE_URL}/status/${id}`, {
+      status
+    })
   }
 }

@@ -26,9 +26,12 @@
                 <img :src="require(`@/assets/images/search.png`)" class="search-icon" />
               </span>
               <b-input-group-append>
-                <g-button type="button" removeDefault cusClass="btn-filter ml-2 rounded">
+                <b-button type="button" v-b-modal.modal-1 class="btn btn-filter ml-2 rounded">
                   <img :src="require(`@/assets/images/filter.png`)" />
-                </g-button>
+                </b-button>
+                <!-- <g-button type="button" removeDefault cusClass="btn-filter ml-2 rounded">
+                  <img :src="require(`@/assets/images/filter.png`)" />
+                </g-button>-->
               </b-input-group-append>
             </b-input-group>
           </form>
@@ -46,10 +49,10 @@
             >{{countTotalCart}}</span>
           </router-link>
           <div v-if="isLogin">
-            <router-link class="mr-4" :to="{name: 'Cart'}">
+            <router-link class="mr-4" to>
               <img :src="require(`@/assets/images/bell.png`)" />
             </router-link>
-            <router-link class="mr-3" :to="{name: 'Cart'}">
+            <router-link class="mr-3" to>
               <img :src="require(`@/assets/images/mail.png`)" />
             </router-link>
             <div class="dropdown d-inline-block">
@@ -66,7 +69,6 @@
               </button>
               <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
                 <router-link :to="{name: 'Dashboard'}" class="dropdown-item">Profile</router-link>
-                <a class="dropdown-item" href="#">Setting</a>
                 <button class="dropdown-item" @click="logoutMixin">Logout</button>
               </div>
             </div>
@@ -84,6 +86,74 @@
         </div>
       </div>
     </div>
+    <b-modal modal-class="p-0" id="modal-1" hide-header hide-footer title="BootstrapVue">
+      <div class="container-fluid new-address">
+        <div class="row new-address-header border-bottom pb-2 mb-3">
+          <div class="col-md-12 d-flex align-items-center">
+            <button
+              type="button"
+              @click="$bvModal.hide('modal-1')"
+              class="close font-badag"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+            <h5 class="mb-0 ml-2 font-weight-bold">Filter</h5>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12 border-bottom pb-2 mb-3">
+            <p>Colors</p>
+            <div class="button-color">
+              <div class="custom-radio-color" v-for="(color, i) in colors" :key="i">
+                <input type="checkbox" :value="color" class="radio-color" />
+                <span class="color-radio shadow-sm" :style="{background:color}"></span>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-12 border-bottom pb-4 mb-3">
+            <p>Sizes</p>
+            <button class="btn btn-light mr-3 mb-3 shadow-sm">XS</button>
+            <button class="btn btn-danger mr-3 mb-3 shadow-sm">S</button>
+            <button class="btn btn-danger mr-3 mb-3 shadow-sm">M</button>
+            <button class="btn btn-light mr-3 mb-3 shadow-sm">L</button>
+            <button class="btn btn-light mr-3 mb-3 shadow-sm">XL</button>
+          </div>
+          <div class="col-md-12 border-bottom pb-4 mb-3">
+            <p>Category</p>
+            <button
+              v-for="category in getCategories"
+              :key="category.id"
+              class="btn btn-light mr-3 mb-3 shadow-sm"
+            >{{category.name}}</button>
+          </div>
+          <div class="col-md-12 border-bottom pb-4 mb-3">
+            <p>By Price</p>
+            <button
+              @click="changeByPriceE"
+              class="btn mr-3 mb-3 shadow-sm"
+              :class="[byPrice === 1 ? 'btn-danger' : 'btn-light']"
+            >Most Expensive</button>
+            <button
+              @click="changeByPriceC"
+              class="btn mr-3 mb-3 shadow-sm"
+              :class="[byPrice === 2 ? 'btn-danger' : 'btn-light']"
+            >Cheapest</button>
+          </div>
+          <div class="col-md-12 mb-3 d-flex">
+            <button
+              class="btn btn-light btn-block mr-3 mb-1 rounded-pill shadow-sm"
+              @click="$bvModal.hide('modal-1')"
+            >Discard</button>
+            <button
+              @click="filter"
+              class="btn btn-danger btn-block rounded-pill mr-3 mb-1 shadow-sm"
+            >Apply</button>
+          </div>
+        </div>
+      </div>
+    </b-modal>
   </nav>
 </template>
 
@@ -93,7 +163,10 @@ export default {
   data() {
     return {
       result: '',
-      name: ''
+      name: '',
+      colorData: '',
+      colors: ['red', 'green', 'blue'],
+      byPrice: 0
     }
   },
   props: {
@@ -117,18 +190,46 @@ export default {
       if (currentRoute !== 'SearchProduct') {
         this.$router.push({ name: 'SearchProduct' })
       }
+    },
+    filter() {
+      const data = {
+        order: 'price',
+        sort: this.byPrice === 1 ? 'desc' : 'asc'
+      }
+      this.CHANGE_ORDERING(data)
+      if (this.$route.name !== 'FilterProduct') {
+        this.$router.push({ name: 'FilterProduct' })
+      }
+      this.allProducts({
+        order: this.product.ordering.order,
+        sort: this.product.ordering.sort,
+        page: 1
+      })
+      this.product.currentPage = 1
+      this.$bvModal.hide('modal-1')
+    },
+    changeByPriceE() {
+      this.byPrice = 1
+    },
+    changeByPriceC() {
+      this.byPrice = 2
     }
   },
   computed: {
     ...mapState('product', ['search', 'showSearch', 'totalProduct']),
+    ...mapState(['product']),
     ...mapGetters('auth', ['isLogin']),
     ...mapGetters('user', ['getDetailUser']),
+    ...mapGetters('category', ['getCategories']),
     ...mapGetters('cart', ['countTotalCart'])
   }
 }
 </script>
 
 <style scoped>
+.font-badag {
+  font-size: 30px !important;
+}
 .main-navbar {
   background: #fff;
   color: #555;
@@ -151,6 +252,7 @@ export default {
   border: 1px solid #ced4da;
   border-radius: 12px !important;
   transition: 0.5s ease-in-out;
+  background-color: transparent !important;
 }
 .btn-filter:hover {
   border-radius: 0 !important;
@@ -171,5 +273,26 @@ export default {
   .navbar-search {
     min-width: auto;
   }
+}
+.button-color {
+  display: flex;
+  margin-bottom: 20px;
+}
+.custom-radio-color {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.radio-color {
+  position: absolute;
+  left: 15px;
+}
+.color-radio {
+  display: inline-block;
+  width: 42px;
+  height: 42px;
+  margin-right: 10px;
+  border-radius: 100%;
 }
 </style>

@@ -73,8 +73,7 @@ export default {
       fields: [
         { key: 'name', label: 'Product Name', sortable: true },
         { key: 'price', sortable: true },
-        { key: 'stock', sortable: true },
-        'option'
+        { key: 'stock', sortable: true }
       ],
       currentPage: 1,
       perPage: 10,

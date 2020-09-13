@@ -212,6 +212,30 @@ const actions = {
           reject(err.response)
         })
     })
+  },
+  postProduct({
+    commit,
+    dispatch
+  }, data) {
+    dispatch('changeIsLoading', true, {
+      root: true
+    })
+    return new Promise((resolve, reject) => {
+      Product.post(data)
+        .then(response => {
+          dispatch('changeIsLoading', false, {
+            root: true
+          })
+          dispatch('myProducts')
+          resolve(response.data)
+        })
+        .catch(err => {
+          dispatch('changeIsLoading', false, {
+            root: true
+          })
+          reject(err.response)
+        })
+    })
   }
 }
 

@@ -1,20 +1,13 @@
 <template>
   <div class="col-lg-3 col-md-4 col-sm-6 col-12 mb-4">
     <div class="card card-product border-0">
-      <img
-        src="https://ae01.alicdn.com/kf/HTB1uKsVRFXXXXaLXVXXq6xXFXXXo/Blazer-pria-pakaian-resmi-terbaru-desain-mantel-celana-tuxedo-jas-pria-kostum-celana-pernikahan-pernikahan-setelan.jpg"
-        class="card-img-top"
-        alt="..."
-      />
+      <img :src="getFirstImage" class="card-img-top" alt="..." />
       <div class="card-body">
-        <router-link
-          class="text-dark text-decoration-none"
-          :to="{name: 'DetailProduct', params: {id: product.id}}"
-        >
+        <span @click="tes" class="text-dark text-decoration-none" style="cursor:pointer">
           <h5
             class="card-title mb-2"
           >{{product.name.length > 35 ? product.name.substr(0,35)+'...' : product.name}}</h5>
-        </router-link>
+        </span>
         <span class="text-danger my-1 font-weight-bold">{{product.price | currency}}</span>
         <span class="text-muted d-block">{{product.storeName}}</span>
         <b-form-rating
@@ -33,8 +26,27 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex'
 export default {
-  props: ['product']
+  props: ['product'],
+  methods: {
+    ...mapActions('product', ['randomProducts', 'detailProduct']),
+    tes() {
+      this.detailProduct(this.product.id)
+      this.$router.push({
+        name: 'DetailProduct',
+        params: { id: this.product.id }
+      })
+      this.randomProducts()
+    }
+  },
+  computed: {
+    getFirstImage() {
+      const image = this.product.image
+      const hasil = image.split(', ')
+      return hasil[0]
+    }
+  }
 }
 </script>
 

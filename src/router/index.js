@@ -7,6 +7,7 @@ import ShippingAddress from '../views/Dashboard/ShippingAddressPage'
 import ProfileStore from '../views/Dashboard/ProfileStorePage'
 import AllProduct from '../views/Landing/HomePage/AllProduct.vue'
 import SearchProduct from '../views/Landing/HomePage/SearchProduct.vue'
+import FilterProduct from '../views/Landing/HomePage/FilterProduct.vue'
 import CategoryProduct from '../views/Landing/HomePage/CategoryProduct.vue'
 import Landing from '../views/Landing/index.vue'
 import Checkout from '../views/Landing/CheckoutPage'
@@ -19,6 +20,7 @@ import ForgotPassword from '../views/Auth/ForgotPasswordPage'
 import ResetPassword from '../views/Auth/ResetPasswordPage'
 import MyOrder from '../views/Dashboard/MyOrderPage'
 import MyProduct from '../views/Dashboard/MyProductPage'
+import SellingProduct from '../views/Dashboard/SellingProductPage'
 import store from '../store'
 
 Vue.use(VueRouter)
@@ -63,6 +65,11 @@ const routes = [ //
         component: SearchProduct
       },
       {
+        path: 'home/filter',
+        name: 'FilterProduct',
+        component: FilterProduct
+      },
+      {
         path: 'checkout',
         name: 'Checkout',
         component: Checkout
@@ -88,12 +95,18 @@ const routes = [ //
       {
         path: 'profile-store',
         name: 'ProfileStore',
-        component: ProfileStore
+        component: ProfileStore,
+        meta: {
+          requiresSeller: true
+        }
       },
       {
         path: 'my-products',
         name: 'MyProducts',
-        component: MyProduct
+        component: MyProduct,
+        meta: {
+          requiresSeller: true
+        }
       },
       {
         path: 'shipping-address',
@@ -104,6 +117,14 @@ const routes = [ //
         path: 'my-order',
         name: 'MyOrder',
         component: MyOrder
+      },
+      {
+        path: 'selling-product',
+        name: 'SellingProduct',
+        component: SellingProduct,
+        meta: {
+          requiresSeller: true
+        }
       }
     ]
   },
@@ -175,6 +196,24 @@ router.beforeEach((to, from, next) => {
       next({
         name: 'Home'
       })
+    } else {
+      next()
+    }
+  } else {
+    next()
+  }
+})
+
+router.beforeEach((to, from, next) => {
+  if (to.matched.some(record => record.meta.requiresSeller)) {
+    if (store.getters['auth/isLogin']) {
+      if (store.getters['user/getDetailUser'].roleId !== 2) {
+        next({
+          name: 'Profile'
+        })
+      } else {
+        next()
+      }
     } else {
       next()
     }

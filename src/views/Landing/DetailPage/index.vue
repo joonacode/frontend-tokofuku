@@ -21,11 +21,7 @@ import { mapActions, mapGetters } from 'vuex'
 export default {
   components: { DetailProduct, CardProduct },
   methods: mapActions('product', ['randomProducts', 'detailProduct']),
-  mounted() {
-    const id = this.$route.params.id
-    this.randomProducts()
-    this.detailProduct(id)
-  },
+
   computed: {
     ...mapGetters('product', ['getRandomProducts', 'getDetailProduct']),
     ...mapGetters(['getLoading'])

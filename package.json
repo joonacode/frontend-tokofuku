@@ -15,10 +15,12 @@
     "core-js": "^3.6.5",
     "vue": "^2.6.11",
     "vue-currency-filter": "^5.1.1",
+    "vue-multiselect": "^2.1.6",
     "vue-owl-carousel": "^2.0.3",
     "vue-router": "^3.2.0",
     "vue-sweetalert2": "^3.0.8",
     "vue-toast-notification": "^0.5.0",
+    "vue2-editor": "^2.10.2",
     "vuex": "^3.4.0"
   },
   "devDependencies": {

@@ -8,14 +8,10 @@
       <div class="col-md-4">
         <div class="main-img">
           <div class="big-img">
-            <img class="img-fluid" :src="product.image" />
+            <img class="img-fluid" :src="getFirstImage" />
           </div>
           <div class="small-img mb-4">
-            <img class="img-fluid" src="../../assets/img-product/small-img1.png" />
-            <img class="img-fluid" src="../../assets/img-product/small-img2.png" />
-            <img class="img-fluid" src="../../assets/img-product/small-img3.png" />
-            <img class="img-fluid" src="../../assets/img-product/small-img4.png" />
-            <img class="img-fluid" src="../../assets/img-product/small-img4.png" />
+            <img class="img-fluid" v-for="(image, i) in getArrImage" :key="i" :src="image" />
           </div>
         </div>
       </div>
@@ -226,7 +222,17 @@ export default {
   },
   computed: {
     ...mapGetters('auth', ['isLogin']),
-    ...mapGetters('user', ['getDetailUser'])
+    ...mapGetters('user', ['getDetailUser']),
+    getFirstImage() {
+      const image = this.product.image
+      const hasil = image.split(', ')
+      return hasil[0]
+    },
+    getArrImage() {
+      const image = this.product.image
+      const hasil = image.split(', ')
+      return hasil
+    }
   }
 }
 </script>

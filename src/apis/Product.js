@@ -23,5 +23,8 @@ export default {
   },
   myProduct() {
     return Api.get(`${BASE_URL}/my-product`)
+  },
+  post(data) {
+    return Api.post(`${BASE_URL}`, data)
   }
 }

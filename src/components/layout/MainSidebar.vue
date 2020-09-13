@@ -83,7 +83,7 @@
             class="text-dark linkChild d-block mb-3 text-muted text-decoration-none"
           >My Products</router-link>
           <router-link
-            to
+            :to="{name:'SellingProduct'}"
             class="text-dark linkChild d-block mb-3 text-muted text-decoration-none"
           >Selling Products</router-link>
         </div>

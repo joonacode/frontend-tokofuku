@@ -2,14 +2,19 @@
   <div>
     <router-link class="text-dark text-decoration-none" :to="{name: 'Home'}">Home</router-link>
     <span class="px-2">></span>
-    <router-link class="text-dark text-decoration-none" :to="{name: 'Home'}">Category</router-link>
+    <span class="text-dark">Category</span>
     <span class="px-2">></span>
-    <router-link class="text-dark text-decoration-none" :to="{name: 'Home'}">Shoes</router-link>
+    <router-link
+      class="text-dark text-decoration-none"
+      :to="{name: 'Category', params:{id: idCategory}}"
+    >{{category}}</router-link>
   </div>
 </template>
 
 <script>
-export default {}
+export default {
+  props: ['category', 'idCategory']
+}
 </script>
 
 <style scoped>

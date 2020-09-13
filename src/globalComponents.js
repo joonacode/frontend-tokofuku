@@ -11,3 +11,6 @@ Vue.component('g-brand',
 Vue.component('g-notfound',
   () => import('./components/atoms/NotFoundMessage.vue')
 )
+Vue.component('g-dashboard',
+  () => import('./components/molecules/CardDashboard.vue')
+)

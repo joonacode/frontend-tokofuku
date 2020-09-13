@@ -1,40 +1,70 @@
 <template>
   <div class="col-12 p-4 mt-3 shadow-sm">
     <div class="row">
-      <b-form-checkbox size="lg" class="col-1 ml-3 mt-4"></b-form-checkbox>
-      <div class="col-lg-2 col-md-4 col-sm-3 col-12">
-        <b-img
-          left
-          src="https://picsum.photos/125/125/?image=58"
-          class="img-fluid"
-          alt="Left image"
-        ></b-img>
+      <div class="col-1 mt-4">
+        <button @click="REMOVE_PRODUCT_FROM_CART(cart.product.id)" class="btn btn-danger btn-sm">
+          <b-icon icon="trash-fill" />
+        </button>
       </div>
-      <div class="col-lg-4 col-md-5 col-sm-7">
-        <h5 class="text-left font-weight-bold">Men's Formal Suit</h5>
-        <p class="text-left text-muted">Zalora Cloth</p>
+      <div class="col-2">
+        <b-img left :src="cart.product.image" class="img-fluid" alt="Left image"></b-img>
       </div>
-      <div class="col-lg-2 col-md-3 col-sm-3 mt-sm-5 mt-lg-3 mt-md-5 text-center">
+      <div class="col-4">
+        <p class="text-left mb-1 font-weight-bold">
+          {{cart.product.name}} | {{cart.detail.size}} |
+          <span
+            class="color-cart border"
+            :style="{background:cart.detail.color}"
+          ></span>
+        </p>
+        <p class="text-left mb-0 text-muted">{{cart.product.storeName}}</p>
+      </div>
+      <div class="col-2 mt-sm-5 mt-lg-3 mt-md-5 text-center">
         <div class="d-flex">
           <div>
-            <b-button pill class="btn-secondary shadow-sm">-</b-button>
+            <b-button
+              @click="MIN_QTY_CART({product: cart.product, stock:cart.detail.stock})"
+              pill
+              class="btn-secondary shadow-sm"
+            >-</b-button>
           </div>
-          <p class="col-lg-4 mt-1">1</p>
+          <p class="col-lg-4 mt-1">{{cart.qty}}</p>
           <div>
-            <b-button pill class="bg-white border-0 text-dark shadow-sm">+</b-button>
+            <b-button
+              @click="PLUS_QTY_CART({product: cart.product, stock:cart.detail.stock})"
+              pill
+              class="bg-white border-0 text-dark shadow-sm"
+            >+</b-button>
           </div>
         </div>
       </div>
-      <div class="col-lg-2 col-md-9 col-sm-9 mt-sm-4 mt-lg-0 mt-md-4">
-        <h5 class="mt-4 text-right">$ 20.0</h5>
+      <div class="col-2 mt-sm-4 mt-lg-0 mt-md-4">
+        <small class="mt-4 mb-0 text-right">{{cart.product.price | currency}}</small>
+        <br />
+        <small class="mt-4 mb-0 text-right">{{cart.product.price * cart.qty | currency}}</small>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-export default {}
+import { mapMutations } from 'vuex'
+export default {
+  props: ['cart'],
+  methods: {
+    ...mapMutations('cart', [
+      'PLUS_QTY_CART',
+      'MIN_QTY_CART',
+      'REMOVE_PRODUCT_FROM_CART'
+    ])
+  }
+}
 </script>
 
 <style scoped>
+.color-cart {
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+}
 </style>

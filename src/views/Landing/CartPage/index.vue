@@ -2,25 +2,17 @@
   <div>
     <div class="container mt-5">
       <h2 class="mb-3 font-weight-bold">My bag</h2>
-      <div class="row" v-if="!empty">
+      <div class="row" v-if="countTotalCart >= 1">
         <div class="col-md-8">
           <div class="col-md-12 p-3 shadow-sm rounded">
-            <div class="d-flex justify-content-between">
-              <b-form-checkbox size="lg" class="font-weight-bold text-left ml-2">
-                <span class="ml-4" style="fontSize:16px">
-                  Select all items
-                  <span class="text-muted">(2 items selected)</span>
-                </span>
-              </b-form-checkbox>
-              <span class="btn text-danger">Delete</span>
+            <div class="d-flex justify-content-end">
+              <span @click="CLEAR_CART" class="btn btn-outline-danger">Clear Cart</span>
             </div>
           </div>
           <div class="scroll-cart">
-            <CartItem />
-            <CartItem />
-            <CartItem />
-            <CartItem />
-            <CartItem />
+            <div class="shadow-sm responsive-cart">
+              <CartItem v-for="(cart, id) in getAllCarts" :key="id" :cart="cart" />
+            </div>
           </div>
         </div>
         <div class="col-md-4">
@@ -28,7 +20,7 @@
             <h5 class="font-weight-bold mb-3">Shopping Summary</h5>
             <div class="d-flex justify-content-between">
               <b-card-text class>Total Price</b-card-text>
-              <b-card-text class="font-weight-bold">$ 20.0</b-card-text>
+              <b-card-text class="font-weight-bold">{{cartTotalPrice | currency}}</b-card-text>
             </div>
             <div class="text-center mt-4">
               <b-button pill block variant="success">Buy</b-button>
@@ -36,7 +28,7 @@
           </b-card>
         </div>
       </div>
-      <div class="text-center mt-3" v-if="empty">
+      <div class="text-center mt-3" v-if="countTotalCart < 1">
         <img
           :src="require(`@/assets/images/cartempty.svg`)"
           class="img-fluid"
@@ -51,6 +43,7 @@
 </template>
 
 <script>
+import { mapGetters, mapMutations } from 'vuex'
 import CartItem from '@/components/molecules/CartItem'
 
 export default {
@@ -59,8 +52,14 @@ export default {
   },
   data() {
     return {
-      empty: true
+      empty: false
     }
+  },
+  methods: {
+    ...mapMutations('cart', ['CLEAR_CART'])
+  },
+  computed: {
+    ...mapGetters('cart', ['countTotalCart', 'getAllCarts', 'cartTotalPrice'])
   }
 }
 </script>
@@ -68,6 +67,9 @@ export default {
 <style  scoped>
 .scroll-cart {
   max-height: 400px;
-  overflow-y: scroll;
+  overflow-y: auto;
+}
+.responsive-cart {
+  width: 800px;
 }
 </style>

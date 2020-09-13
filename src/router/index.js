@@ -1,6 +1,9 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Landing/HomePage'
+import Dashboard from '../views/Dashboard'
+import Profile from '../views/Dashboard/ProfilePage'
+import ProfileStore from '../views/Dashboard/ProfileStorePage'
 import AllProduct from '../views/Landing/HomePage/AllProduct.vue'
 import SearchProduct from '../views/Landing/HomePage/SearchProduct.vue'
 import CategoryProduct from '../views/Landing/HomePage/CategoryProduct.vue'
@@ -26,34 +29,62 @@ const routes = [ //
     },
     children: [ //
       {
-        path: '/home',
+        path: 'home',
         name: 'Home',
         component: Home
       },
       {
-        path: '/cart',
+        path: 'cart',
         name: 'Cart',
         component: Cart
       },
       {
-        path: '/detail-product/:id',
+        path: 'detail-product/:id',
         name: 'DetailProduct',
         component: DetailProduct
       },
       {
-        path: '/category/:id',
+        path: 'category/:id',
         name: 'Category',
         component: CategoryProduct
       },
       {
-        path: '/home/all',
+        path: 'home/all',
         name: 'AllProduct',
         component: AllProduct
       },
       {
-        path: '/home/search',
+        path: 'home/search',
         name: 'SearchProduct',
         component: SearchProduct
+      }
+    ]
+  },
+  {
+    path: '/dashboard',
+    name: 'Dashboard',
+    component: Dashboard,
+    redirect: {
+      name: 'Profile'
+    },
+    meta: {
+      requiresLogin: true
+    },
+    children: [ //
+      {
+        path: 'profile',
+        name: 'Profile',
+        component: Profile
+      },
+      {
+        path: 'profile-store',
+        name: 'ProfileStore',
+        component: ProfileStore
+      },
+      {
+        path: 'my-products',
+        name: 'MyProducts',
+        component: ProfileStore
       }
     ]
   },
@@ -112,7 +143,7 @@ const router = new VueRouter({
 })
 
 router.beforeEach((to, from, next) => {
-  if (to.matched.some(record => record.meta.requiresAuth)) {
+  if (to.matched.some(record => record.meta.requiresLogin)) {
     if (!store.getters['auth/isLogin']) {
       next({
         name: 'Login'

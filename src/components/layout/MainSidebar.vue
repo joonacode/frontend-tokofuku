@@ -1,88 +1,164 @@
 <template>
-<div class="container mt-5 ml-5 mr-auto">
-    <!-- =====================================          BAGIAN FOTO PROFILE         ===================================== -->
-    <b-row class="text-center mt-5">
-        <b-col cols="4" class="mb-2">
-            <b-avatar src="https://pbs.twimg.com/profile_images/1300740232485068800/KpNhyts7_400x400.jpg" size="7rem"></b-avatar>
-        </b-col>
-        <b-col cols="8" class="text-left">
-            <h2 class="text-left mt-3">Johanes Mikael</h2>
-            <br><a class="text-muted mt-n2 profile"><b-icon icon="pencil" variant="secondary"></b-icon> Ubah profile</a>
-        </b-col>
-    <!-- =====================================          BAGIAN LIST LINK         ===================================== -->
-        <b-col cols="12">
-    <!-- =====================================          COLLAPSE PARENT 1         ===================================== -->
-            <div class="text-left mt-5 ml-5">
-                <a data-toggle="collapse" href="#collapseExample" aria-expanded="true" aria-controls="collapseExample" class="linkCollapse text-dark">
-                <b-icon icon="person-circle" variant="primary"></b-icon> Store <b-icon icon="chevron-down" variant="dark" class="ml-5 icons"></b-icon>
-                </a>
-            </div>
-    <!-- =====================================          COLLAPSE CHILD 1         ===================================== -->
-            <div class="collapse text-left mt-4" id="collapseExample">
-                <div class="ml-5">
-                <router-link to="" class="mb-auto ml-5 text-dark linkChild text-muted">Store profile</router-link>
-                </div>
-            </div>
-        </b-col>
-        <b-col cols="12">
-    <!-- =====================================          COLLAPSE PARENT 2         ===================================== -->
-            <div class="text-left mt-5 ml-5">
-                <a data-toggle="collapse" href="#collapseExample1" aria-expanded="true" aria-controls="collapseExample" class="linkCollapse text-dark">
-                    <b-icon icon="box-seam" variant="white" class='bg-warning rounded-circle'></b-icon> Product <b-icon icon="chevron-down" variant="dark" class="ml-5 icons"></b-icon>
-                </a>
-            </div>
-            <div class="collapse text-left mt-4" id="collapseExample1">
-    <!-- =====================================          COLLAPSE CHILD 2         ===================================== -->
-                <div class="ml-5">
-                    <router-link to="" class="mb-auto ml-5 text-dark linkChild text-muted">My products</router-link>
-                </div>
-                <div class="ml-5 mt-4">
-                    <router-link to="" class="mb-auto ml-5 text-dark linkChild text-muted">Selling products</router-link>
-                </div>
-            </div>
-        </b-col>
-    <!-- =====================================          COLLAPSE PARENT 3         ===================================== -->
-        <b-col cols="12">
-            <div class="text-left mt-5 ml-5">
-                <a data-toggle="collapse" href="#collapseExample2" aria-expanded="true" aria-controls="collapseExample" class="linkCollapse text-dark">
-                    <b-icon icon="cart3" variant="white" class="bg-danger rounded-circle"></b-icon> Order <b-icon icon="chevron-down" variant="dark" class="ml-5 icons"></b-icon>
-                </a>
-            </div>
-            <div class="collapse text-left mt-4" id="collapseExample2">
-    <!-- =====================================          COLLAPSE CHILD 3         ===================================== -->
-                <div class="ml-5">
-                    <router-link to="" class="mb-auto ml-5 text-dark linkChild text-muted">My order</router-link>
-                </div>
-                <div class="ml-5 mt-4">
-                    <router-link to="" class="mb-auto ml-5 text-dark linkChild text-muted">Order cancel</router-link>
-                </div>
-            </div>
-        </b-col>
-    </b-row>
-</div>
+  <div class="col-lg-3 col-md-4 py-5 responsive-sidebar border-right">
+    <div class="d-flex" style="marginBottom:70px">
+      <b-avatar v-if="getDetailUser.image" size="4rem" :src="getDetailUser.image"></b-avatar>
+      <b-avatar v-else size="4rem"></b-avatar>
+      <div class="d-flex ml-3 flex-column">
+        <h5 class="text-left mt-1">{{getDetailUser.name}}</h5>
+        <router-link :to="{name: 'Profile'}" class="text-muted text-decoration-none mt-n2 profile">
+          <b-icon icon="pencil" variant="secondary"></b-icon>
+          <span class="ml-1">Ubah profile</span>
+        </router-link>
+      </div>
+    </div>
+    <!-- Menu Admin -->
+    <div v-if="getDetailUser.roleId === 1">
+      <div class="menu-item">
+        <router-link
+          :to="{name: 'Profile'}"
+          aria-expanded="true"
+          class="linkCollapse text-dark text-decoration-none"
+        >
+          <img :src="require(`@/assets/images/myprofile.png`)" alt />
+          <span class="ml-3">My Account</span>
+        </router-link>
+      </div>
+      <div class="menu-item">
+        <router-link
+          :to="{name: 'Profile'}"
+          aria-expanded="true"
+          class="linkCollapse text-dark text-decoration-none"
+        >
+          <img :src="require(`@/assets/images/address.png`)" alt />
+          <span class="ml-3">Shipping Adrress</span>
+        </router-link>
+      </div>
+      <div class="menu-item">
+        <router-link
+          :to="{name: 'Profile'}"
+          aria-expanded="true"
+          class="linkCollapse text-dark text-decoration-none"
+        >
+          <img :src="require(`@/assets/images/myorder.png`)" alt />
+          <span class="ml-3">My Order</span>
+        </router-link>
+      </div>
+    </div>
+    <!-- Menu Seller -->
+    <div v-if="getDetailUser.roleId === 2">
+      <div class="menu-item">
+        <a
+          data-toggle="collapse"
+          href="#collapseExample"
+          aria-expanded="true"
+          aria-controls="collapseExample"
+          class="linkCollapse text-dark text-decoration-none"
+        >
+          <img :src="require(`@/assets/images/home.png`)" alt />
+          <span class="ml-3">Store</span>
+          <b-icon icon="chevron-down" variant="dark" class="ml-5 icons float-right"></b-icon>
+        </a>
+        <div class="collapse text-left mt-4 ml-4" id="collapseExample">
+          <router-link
+            :to="{name: 'ProfileStore'}"
+            class="text-dark linkChild d-block mb-3 text-muted text-decoration-none"
+          >Store profile</router-link>
+        </div>
+      </div>
+      <div class="menu-item">
+        <a
+          data-toggle="collapse"
+          href="#collapseProduct"
+          aria-expanded="true"
+          aria-controls="collapseProduct"
+          class="linkCollapse text-dark text-decoration-none"
+        >
+          <img :src="require(`@/assets/images/product.png`)" alt />
+          <span class="ml-3">Product</span>
+          <b-icon icon="chevron-down" variant="dark" class="ml-5 icons float-right"></b-icon>
+        </a>
+        <div class="collapse text-left mt-4 ml-4" id="collapseProduct">
+          <router-link
+            :to="{name: 'MyProducts'}"
+            class="text-dark linkChild d-block mb-3 text-muted text-decoration-none"
+          >My Products</router-link>
+          <router-link
+            to
+            class="text-dark linkChild d-block mb-3 text-muted text-decoration-none"
+          >Selling Products</router-link>
+        </div>
+      </div>
+      <div class="menu-item">
+        <a
+          data-toggle="collapse"
+          href="#collapseOrder"
+          aria-expanded="true"
+          aria-controls="collapseOrder"
+          class="linkCollapse text-dark text-decoration-none"
+        >
+          <img :src="require(`@/assets/images/cart2.png`)" alt />
+          <span class="ml-3">Order</span>
+          <b-icon icon="chevron-down" variant="dark" class="ml-5 icons float-right"></b-icon>
+        </a>
+        <div class="collapse text-left mt-4 ml-4" id="collapseOrder">
+          <router-link
+            to
+            class="text-dark linkChild d-block mb-3 text-muted text-decoration-none"
+          >My Order</router-link>
+          <router-link
+            to
+            class="text-dark linkChild d-block mb-3 text-muted text-decoration-none"
+          >Order Cancle</router-link>
+        </div>
+      </div>
+    </div>
+    <!-- Menu Customer -->
+    <div v-if="getDetailUser.roleId === 3">
+      <div class="menu-item">
+        <router-link
+          :to="{name: 'Profile'}"
+          aria-expanded="true"
+          class="linkCollapse text-dark text-decoration-none"
+        >
+          <img :src="require(`@/assets/images/myprofile.png`)" alt />
+          <span class="ml-3">My Account</span>
+        </router-link>
+      </div>
+      <div class="menu-item">
+        <router-link
+          :to="{name: 'Profile'}"
+          aria-expanded="true"
+          class="linkCollapse text-dark text-decoration-none"
+        >
+          <img :src="require(`@/assets/images/address.png`)" alt />
+          <span class="ml-3">Shipping Adrress</span>
+        </router-link>
+      </div>
+      <div class="menu-item">
+        <router-link
+          :to="{name: 'Profile'}"
+          aria-expanded="true"
+          class="linkCollapse text-dark text-decoration-none"
+        >
+          <img :src="require(`@/assets/images/myorder.png`)" alt />
+          <span class="ml-3">My Order</span>
+        </router-link>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+
 export default {
-  name: 'MainSidebar'
+  computed: mapGetters('user', ['getDetailUser'])
 }
 </script>
 
-<style>
-.profile {
-    font-size: 20px;
-}
-.linkCollapse {
-    text-decoration: none !important;
-    font-weight: 500;
-    font-size: 28px;
-    line-height: 24px;
-}
-.linkChild {
-    font-size: 22px;
-    line-height: 24px;
-}
-.icons {
-    font-size: 20px;
+<style scoped>
+.menu-item {
+  margin-bottom: 30px;
+  padding-right: 20px;
 }
 </style>

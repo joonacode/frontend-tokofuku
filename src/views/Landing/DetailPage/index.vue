@@ -21,7 +21,7 @@ import { mapActions, mapGetters } from 'vuex'
 export default {
   components: { DetailProduct, CardProduct },
   methods: mapActions('product', ['randomProducts', 'detailProduct']),
-  created() {
+  mounted() {
     const id = this.$route.params.id
     this.randomProducts()
     this.detailProduct(id)

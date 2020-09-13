@@ -6,6 +6,7 @@
     :autoplay="true"
     :nav="false"
     :autoplayHoverPause="true"
+    :autoplayTimeout="2000"
   >
     <router-link
       v-for="category in getCategories"

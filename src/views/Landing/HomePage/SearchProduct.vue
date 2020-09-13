@@ -5,7 +5,10 @@
         <div class="col-md-12 mt-4">
           <h2 class="text-left text-black font-weight-bold">
             Search Product
-            <router-link class="btn btn-sm btn-success shadow mb-1" :to="{name: 'AllProduct'}">Back</router-link>
+            <router-link
+              class="btn btn-sm btn-success shadow ml-2 mb-1"
+              :to="{name: 'AllProduct'}"
+            >Back</router-link>
           </h2>
 
           <p

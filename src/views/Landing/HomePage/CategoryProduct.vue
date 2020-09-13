@@ -1,6 +1,10 @@
 <template>
   <div class="container">
     <div v-if="getAllProducts">
+      <div class="mt-5 mb-4">
+        <BreadcrumbItem :category="getDetailCategory.name" :idCategory="getDetailCategory.id" />
+      </div>
+
       <div class="row">
         <div class="col-md-12 mt-4 mb-3">
           <h2 class="text-left text-black font-weight-bold">
@@ -30,6 +34,7 @@
 </template>
 
 <script>
+import BreadcrumbItem from '@/components/molecules/BreadcrumbItem'
 import CardProduct from '@/components/molecules/CardProduct'
 import { mapActions, mapGetters, mapState } from 'vuex'
 
@@ -37,7 +42,7 @@ export default {
   data() {
     return {}
   },
-  components: { CardProduct },
+  components: { CardProduct, BreadcrumbItem },
   methods: {
     ...mapActions('product', ['allCategoryProducts']),
     ...mapActions('category', ['detailCategory']),

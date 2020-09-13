@@ -1,5 +1,8 @@
 <template>
-  <nav class="navbar navbar-expand-lg py-3 mb-4 main-navbar shadow-navbar sticky-top">
+  <nav
+    class="navbar navbar-expand-lg py-3 main-navbar shadow-navbar sticky-top"
+    :class="[!isDashboard ? 'mb-4' : '']"
+  >
     <div class="container">
       <g-brand cusClass="mb-0 navbar-brand" />
 
@@ -31,8 +34,16 @@
           </form>
         </div>
         <div class="form-inline my-2 my-lg-0">
-          <router-link class="mr-4" :to="{name: 'Cart'}">
+          <router-link
+            v-if="getDetailUser.roleId === 3"
+            class="mr-4 position-relative"
+            :to="{name: 'Cart'}"
+          >
             <img :src="require(`@/assets/images/cart.png`)" />
+            <span
+              v-if="countTotalCart > 0"
+              class="badge badge-success badge-pill count-cart"
+            >{{countTotalCart}}</span>
           </router-link>
           <div v-if="isLogin">
             <router-link class="mr-4" :to="{name: 'Cart'}">
@@ -54,7 +65,7 @@
                 <b-avatar v-else></b-avatar>
               </button>
               <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
-                <a class="dropdown-item" href="#">Profile</a>
+                <router-link :to="{name: 'Dashboard'}" class="dropdown-item">Profile</router-link>
                 <a class="dropdown-item" href="#">Setting</a>
                 <button class="dropdown-item" @click="logoutMixin">Logout</button>
               </div>
@@ -85,6 +96,12 @@ export default {
       name: ''
     }
   },
+  props: {
+    isDashboard: {
+      type: Boolean,
+      default: false
+    }
+  },
   methods: {
     ...mapActions('product', ['allProducts']),
     ...mapMutations('product', ['UPDATE_SEARCH_INPUT_TEXT', 'CHANGE_ORDERING']),
@@ -105,7 +122,8 @@ export default {
   computed: {
     ...mapState('product', ['search', 'showSearch', 'totalProduct']),
     ...mapGetters('auth', ['isLogin']),
-    ...mapGetters('user', ['getDetailUser'])
+    ...mapGetters('user', ['getDetailUser']),
+    ...mapGetters('cart', ['countTotalCart'])
   }
 }
 </script>
@@ -121,6 +139,12 @@ export default {
 }
 .navbar-search {
   min-width: 450px;
+}
+
+.count-cart {
+  position: absolute;
+  left: 15px;
+  bottom: 12px;
 }
 
 .btn-filter {

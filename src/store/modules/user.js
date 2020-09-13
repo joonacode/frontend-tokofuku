@@ -24,6 +24,54 @@ const actions = {
         reject(err.response)
       })
     })
+  },
+  updateProfile({
+    dispatch
+  }, {
+    data,
+    id
+  }) {
+    dispatch('changeIsLoading', true, {
+      root: true
+    })
+    return new Promise((resolve, reject) => {
+      User.updateProfile(id, data).then(response => {
+        resolve(response.data.results)
+        dispatch('changeIsLoading', false, {
+          root: true
+        })
+        dispatch('detailUser')
+      }).catch(err => {
+        dispatch('changeIsLoading', false, {
+          root: true
+        })
+        reject(err.response)
+      })
+    })
+  },
+  updateStore({
+    dispatch
+  }, {
+    data,
+    id
+  }) {
+    dispatch('changeIsLoading', true, {
+      root: true
+    })
+    return new Promise((resolve, reject) => {
+      User.updateStore(id, data).then(response => {
+        resolve(response.data.results)
+        dispatch('changeIsLoading', false, {
+          root: true
+        })
+        dispatch('detailUser')
+      }).catch(err => {
+        dispatch('changeIsLoading', false, {
+          root: true
+        })
+        reject(err.response)
+      })
+    })
   }
 
 }

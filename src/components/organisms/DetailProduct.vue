@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div class="mb-4 mt-5">
-      <BreadcrumbItem />
+      <BreadcrumbItem :category="product.categoryName" :idCategory="product.idCategory" />
     </div>
     <!-- Main Img Side Rigt -->
     <div class="row border-bottom pb-4">
@@ -40,7 +40,13 @@
           <!-- Button color -->
           <div class="button-color">
             <div class="custom-radio-color" v-for="(color, i) in product.colorArr" :key="i">
-              <input type="radio" class="radio-color" name="color" />
+              <input
+                type="radio"
+                v-model="colorData"
+                :value="color"
+                class="radio-color"
+                name="color"
+              />
               <span class="color-radio shadow-sm" :style="{background:color}"></span>
             </div>
           </div>
@@ -48,12 +54,13 @@
           <div class="size mb-4">
             <div class="mr-3">
               <p>Size</p>
-              <select class="form-control">
+              <select class="form-control" v-model="size">
+                <option value>Select Size</option>
                 <option v-for="(size, i) in product.sizeArr" :key="i" :value="size">{{size}}</option>
               </select>
             </div>
             <div>
-              <p>Jumlah</p>
+              <p>Amount</p>
               <button class="btn btn-info mr-1 rounded-circle btn-plus" @click="minQty">-</button>
               <span>{{stock}}</span>
               <button class="btn btn-light ml-1 rounded-pill btn-plus" @click="plusQty">+</button>
@@ -78,16 +85,20 @@
               class="btn btn-success rounded-pill small-res w-75 medium-btn"
             >Buy Now</router-link>
             <g-button
-              v-if="isLogin"
+              v-if="isLogin && getDetailUser.roleId === 3"
               removeDefault
               class="btn-outline-success small-res rounded-pill mr-2 w-25 small-btn"
             >Chat</g-button>
             <g-button
-              v-if="isLogin"
+              v-if="isLogin && getDetailUser.roleId === 3"
               removeDefault
+              @cus-click="addToBag"
               class="btn-outline-success small-res rounded-pill mr-2 w-25 small-btn"
             >Add Bag</g-button>
-            <g-button v-if="isLogin" class="w-75 small-res medium-btn">Buy Now</g-button>
+            <g-button
+              v-if="isLogin && getDetailUser.roleId === 3"
+              class="w-75 small-res medium-btn"
+            >Buy Now</g-button>
           </div>
         </div>
       </div>
@@ -166,12 +177,14 @@
 
 <script>
 import BreadcrumbItem from '@/components/molecules/BreadcrumbItem'
-import { mapGetters } from 'vuex'
+import { mapGetters, mapMutations } from 'vuex'
 export default {
   name: 'DetailProduct',
   data() {
     return {
-      stock: 0
+      stock: 0,
+      colorData: '',
+      size: ''
     }
   },
   props: ['product'],
@@ -179,14 +192,42 @@ export default {
     BreadcrumbItem
   },
   methods: {
+    ...mapMutations('cart', ['ADD_TO_CART']),
     minQty() {
       if (this.stock > 1) this.stock -= 1
     },
     plusQty() {
       if (this.stock < this.product.stock) this.stock += 1
+    },
+    addToBag() {
+      if (!this.colorData) {
+        this.toastError('Choose a color first')
+      } else if (this.stock === 0) {
+        this.toastError('Please enter the amount')
+      } else if (!this.size) {
+        this.toastError('Please enter the size')
+      } else {
+        const newCart = {
+          product: this.product,
+          qty: this.stock,
+          detail: {
+            qty: this.stock,
+            stock: this.product.stock,
+            color: this.colorData,
+            size: this.size
+          }
+        }
+        this.stock = 0
+        this.colorData = ''
+        this.size = ''
+        this.ADD_TO_CART(newCart)
+      }
     }
   },
-  computed: mapGetters('auth', ['isLogin'])
+  computed: {
+    ...mapGetters('auth', ['isLogin']),
+    ...mapGetters('user', ['getDetailUser'])
+  }
 }
 </script>
 

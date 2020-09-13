@@ -33,6 +33,9 @@ const actions = {
           })
           commit('LOGIN_USER', response.data)
           resolve(response.data)
+          dispatch('user/detailUser', null, {
+            root: true
+          })
         })
         .catch(err => {
           dispatch('changeIsLoading', false, {

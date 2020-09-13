@@ -2,21 +2,11 @@
   <div class="container-fluid">
     <div class="form">
       <div class="chat-left">
-        <div class="title">Chat</div>
-        <div class="profil">
-          <img src="../../assets/Chat-logos/gdpr_profile-picture 1.png" alt />
-          <span class="name-chat">Jonas adam</span>
-          <br />
-          <span class="isi-chat">Mau tanya, nama saya siapa?..</span>
-        </div>
+        <div class="nav">Chat</div>
+        <div class="title">Belum ada chat</div>
       </div>
       <div class="chat-right">
-        <div class="nav-chat">
-          <div class="profil">
-            <img src="../../assets/Chat-logos/gdpr_profile-picture 1.png" alt />
-            <span class="name-chat">Jonas adam</span>
-          </div>
-        </div>
+        <div class="nav-chat"></div>
         <div class="chat-input">
           <input type="text" placeholder="type message..." />
         </div>
@@ -27,7 +17,7 @@
 
 <script>
 export default {
-  name: 'Chat '
+  name: 'Chatempety'
 }
 </script>
 
@@ -53,8 +43,7 @@ export default {
   border-radius: 5px;
 }
 
-/* Chat */
-.form .chat-left .title {
+.form .chat-left .nav {
   border-bottom: 1px solid #8e8e93;
   height: 70px;
 
@@ -65,39 +54,11 @@ export default {
   font-weight: bolder;
 }
 
-.form .chat-left .profil {
-  position: relative;
-  top: 20px;
-  left: 20px;
-
+.form .chat-left .title {
   font-size: 20px;
-  text-align: left;
   font-weight: bolder;
-}
-
-.form .chat-left .profil img {
-  border-radius: 50%;
-
-  width: 45px;
-  height: 45px;
-}
-
-.form .chat-left .profil .name-chat {
-  /* border: 1px solid black; */
-  font-weight: 600;
-  font-size: 19px;
-  margin-left: 10px;
   position: relative;
-  top: -8px;
-}
-
-.form .chat-left .profil .isi-chat {
-  /* border: 1px solid black; */
-  font-size: 13px;
-  position: relative;
-  top: -25px;
-  left: 55px;
-  color: #9b9b9b;
+  top: 200px;
 }
 
 /* Chat right */

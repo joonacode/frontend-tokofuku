@@ -126,7 +126,7 @@
       </div>
       <div class="menu-item">
         <router-link
-          :to="{name: 'Profile'}"
+          :to="{name: 'ShippingAddress'}"
           aria-expanded="true"
           class="linkCollapse text-dark text-decoration-none"
         >

@@ -23,7 +23,10 @@
               <b-card-text class="font-weight-bold">{{cartTotalPrice | currency}}</b-card-text>
             </div>
             <div class="text-center mt-4">
-              <b-button pill block variant="success">Buy</b-button>
+              <router-link
+                :to="{name: 'Checkout'}"
+                class="btn btn-success rounded-pill btn-block"
+              >Buy</router-link>
             </div>
           </b-card>
         </div>

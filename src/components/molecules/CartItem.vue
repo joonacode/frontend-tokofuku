@@ -7,7 +7,7 @@
         </button>
       </div>
       <div class="col-2">
-        <b-img left :src="cart.product.image" class="img-fluid" alt="Left image"></b-img>
+        <b-img left :src="cart.product.image" class="img-fluid rounded shadow-sm" alt="Left image"></b-img>
       </div>
       <div class="col-4">
         <p class="text-left mb-1 font-weight-bold">

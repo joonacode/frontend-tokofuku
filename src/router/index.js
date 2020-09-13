@@ -3,11 +3,13 @@ import VueRouter from 'vue-router'
 import Home from '../views/Landing/HomePage'
 import Dashboard from '../views/Dashboard'
 import Profile from '../views/Dashboard/ProfilePage'
+import ShippingAddress from '../views/Dashboard/ShippingAddressPage'
 import ProfileStore from '../views/Dashboard/ProfileStorePage'
 import AllProduct from '../views/Landing/HomePage/AllProduct.vue'
 import SearchProduct from '../views/Landing/HomePage/SearchProduct.vue'
 import CategoryProduct from '../views/Landing/HomePage/CategoryProduct.vue'
 import Landing from '../views/Landing/index.vue'
+import Checkout from '../views/Landing/CheckoutPage'
 import Login from '../views/Auth/LoginPage'
 import VerifyAccount from '../views/Auth/LoginPage/ActivateAccount.vue'
 import Register from '../views/Auth/RegisterPage'
@@ -57,6 +59,11 @@ const routes = [ //
         path: 'home/search',
         name: 'SearchProduct',
         component: SearchProduct
+      },
+      {
+        path: 'checkout',
+        name: 'Checkout',
+        component: Checkout
       }
     ]
   },
@@ -85,6 +92,11 @@ const routes = [ //
         path: 'my-products',
         name: 'MyProducts',
         component: ProfileStore
+      },
+      {
+        path: 'shipping-address',
+        name: 'ShippingAddress',
+        component: ShippingAddress
       }
     ]
   },

@@ -59,23 +59,26 @@ npm install npm@latest -g
 
 ### Installation
 
-1. Get a free API Key at [https://rapidapi.com/collection](https://rapidapi.com/collection)
-2. Clone the repo
+1. Clone the repo
 
 ```sh
 git clone https://github.com/joonacode/frontend-tokofuku.git
 ```
 
-3. Install NPM packages
+2. Install NPM packages
 
 ```sh
 npm install
 ```
 
-4. Enter your API in `config.js`
+3. Add .env file at root folder project, and add following
+```sh
+VUE_APP_ENDPOINT = [Backend API]
+```
 
-```JS
-const API_KEY = 'ENTER YOUR API';
+4. Compiles and hot-reloads for development
+```sh
+npm run serve
 ```
 
 <!-- ROADMAP -->

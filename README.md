@@ -1,6 +1,6 @@
 # frontend-tokofuku
 
-![Image Banner](smartmockups_keydqyfk.png)
+![Image Banner](https://github.com/joonacode/frontend-tokofuku/blob/master/smartmockups_kf1uc5at.png)
 
 ## Table of Contents
 
@@ -29,6 +29,8 @@ Here's why:
 - great performance
 - specially designed for online shop needs
 - reusable components
+
+![Image Banner](https://github.com/joonacode/frontend-tokofuku/blob/master/smartmockups_kf1u1m36.png)
 
 Of course, no one template will serve all projects since your needs may be different. So I'll be adding more in the near future. You may also suggest changes by forking this repo and creating a pull request or opening an issue.
 

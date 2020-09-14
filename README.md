@@ -1,7 +1,5 @@
 # frontend-tokofuku
 
-# Web Pos app for F&B Industry
-
 ![Image Banner](smartmockups_keydqyfk.png)
 
 ## Table of Contents
@@ -13,26 +11,30 @@
   - [Installation](#installation)
 - [Roadmap](#roadmap)
 - [Contributing](#contributing)
-- [Contact](#contact)
 - [Acknowledgements](#acknowledgements)
 
 <!-- ABOUT THE PROJECT -->
 
 ## About The Project
 
-This application is made to support sales activities in the f & b industry so that between divisions from cashier to managerial level can coordinate well where all the features in this application are specially designed for this.
+tokofuku is an online shop website that is made specifically for e-commerce purposes, for many features to support transactions in online stores
+[Demo Click Here](https://tokofuku.fwdev.online)
 
 Here's why:
 
 - Great responsive display for any device
 - Does not reload pages when moving between pages
 - made with all the latest and most up-to-date tools and technology today
+- two role in login (custumer & seller)
+- great performance
+- specially designed for online shop needs
+- reusable components
 
 Of course, no one template will serve all projects since your needs may be different. So I'll be adding more in the near future. You may also suggest changes by forking this repo and creating a pull request or opening an issue.
 
 ### Built With
 
-- [Bootstrap](https://getbootstrap.com)
+- [Bootstrap-vue](https://bootstrap-vue.org/)
 - [Vue.js](https://docs.vuejs.id/)
 - [Node.js](https://nodejs.org/en/)
 
@@ -59,7 +61,7 @@ npm install npm@latest -g
 2. Clone the repo
 
 ```sh
-git clone https://github.com/deni-irawan40563/Web_Pos_app_for_F-B_Industry.git
+git clone https://github.com/joonacode/frontend-tokofuku.git
 ```
 
 3. Install NPM packages
@@ -78,7 +80,7 @@ const API_KEY = 'ENTER YOUR API';
 
 ## Roadmap
 
-See the [open issues](https://github.com/deni-irawan40563/Web_Pos_app_for_F-B_Industry/issues) for a list of proposed features (and known issues).
+See the [open issues](https://github.com/joonacode/frontend-tokofuku/issues) for a list of proposed features (and known issues).
 
 <!-- CONTRIBUTING -->
 
@@ -92,15 +94,6 @@ Contributions are what make the open source community such an amazing place to b
 4. Push to the Branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
 
-<!-- CONTACT -->
-
-## Contact
-
-<div>
-<p>deni.irawan40563@gmail.com</p>
-<a href = "mailto:deni-irawan40563@gmail.com">Send me a message</a>
-</div>
-
 <!-- ACKNOWLEDGEMENTS -->
 
 ## Acknowledgements
@@ -109,7 +102,12 @@ Contributions are what make the open source community such an amazing place to b
 - [Vuex](https://vuex.vuejs.org/)
 - [Vue-Router](https://router.vuejs.org/)
 - [Core-js](https://www.npmjs.com/package/core-js)
-- [Font Awesome](https://fontawesome.com)
+- [vue-currency-filter](https://www.npmjs.com/package/vue-currency-filter)
+- [vue-multiselect](https://www.npmjs.com/package/vue-multiselect)
+- [vue-owl-carousel](https://www.npmjs.com/package/xx-vue-owl-carousel)
+- [vue-sweetalert](https://www.npmjs.com/search?q=vue-sweetalert)
+- [vue-toast-notification](https://www.npmjs.com/package/vue-toast-notification)
+- [vue2-editor](https://www.npmjs.com/package/vue2-editor)
 
 ## Project setup
 

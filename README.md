@@ -1,4 +1,20 @@
-# frontend-tokofuku
+<!-- PROJECT LOGO -->
+<br />
+<p align="center">
+  <a href="https://github.com/joonacode/frontend-tokofuku.git">
+    <img src="https://github.com/joonacode/frontend-tokofuku/blob/master/logo.JPG" alt="Logo">
+  </a>
+
+  <h1 align="center">frontend-tokofuku</h1>
+
+  <p align="center">
+    <a href="https://tokofuku.fwdev.online/home">View Demo</a>
+    ·
+    <a href="https://github.com/joonacode/frontend-tokofuku/issues">Report Bug</a>
+    ·
+    <a href="https://github.com/joonacode/frontend-tokofuku/issues">Request Feature</a>
+  </p>
+</p>
 
 ![Image Banner](https://github.com/joonacode/frontend-tokofuku/blob/master/smartmockups_kf1u1m36.png)
 
